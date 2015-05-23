@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ProfileController
@@ -32,7 +33,9 @@ class ProfileController extends Controller {
 	}
 
     public function show ($id, UserContract $users) {
+
         return view('frontend.user.profile.show')
-            ->withUser($users->findOrThrowException($id, false));
+            ->withUser($users->findOrThrowException($id, false))
+            ->with('isFriend', Auth::user()->friends->find($id));
     }
 }

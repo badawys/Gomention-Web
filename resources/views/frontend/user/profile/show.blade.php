@@ -32,6 +32,19 @@
                                         <th>Created At</th>
                                         <td>{!! $user->created_at->diffForHumans() !!}</td>
                                     </tr>
+                                    @if (Auth::user()->id != $user->id)
+                                        <tr>
+                                            <th>Actions</th>
+                                            <td>
+                                                @if ($isFriend)
+                                                    <a href="{!!route('RemoveFriend', $user->id)!!}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Friends</a>
+                                                @else
+                                                    <a href="{!!route('AddFriend', $user->id)!!}" class="btn btn-primary btn-xs">Add Friend</a>
+                                                @endif
+
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </table>
                             </div><!--tab panel profile-->
 

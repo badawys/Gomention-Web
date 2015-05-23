@@ -79,4 +79,115 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			return "<label class='label label-success'>Yes</label>";
 		return "<label class='label label-danger'>No</label>";
 	}
+
+
+    /**
+     * friendship that user started
+     *
+     * @return $this
+     */
+    function friendsOfMine()
+    {
+        return $this->belongsToMany('App\User', 'friends_users', 'user_id', 'friend_id')
+            ->wherePivot('accepted', '=', 1)
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+
+    /**
+     * friendship that user was invited to
+     *
+     * @return $this
+     */
+    function friendOf()
+    {
+        return $this->belongsToMany('App\User', 'friends_users', 'friend_id', 'user_id')
+            ->wherePivot('accepted', '=', 1)
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+
+    /**
+     * friendship that user started and not accepted
+     *
+     * @return $this
+     */
+    function friendsOfMineAndNotAccepted()
+    {
+        return $this->belongsToMany('App\User', 'friends_users', 'user_id', 'friend_id')
+            ->wherePivot('accepted', '=', 0)
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+
+    /**
+     * friendship that user was invited to and not accepted
+     *
+     * @return $this
+     */
+    function friendOfAndNotAccepted()
+    {
+        return $this->belongsToMany('App\User', 'friends_users', 'friend_id', 'user_id')
+            ->wherePivot('accepted', '=', 0)
+            ->withPivot('accepted')
+            ->withTimestamps();
+    }
+
+    /**
+     * accessor allowing you call $user->friends
+     *
+     * @return mixed
+     */
+    public function getFriendsAttribute()
+    {
+        if ( ! array_key_exists('App\FriendsUsers', $this->relations)) $this->loadFriends();
+
+        return $this->getRelation('App\FriendsUsers');
+    }
+
+    /**
+     * @return void
+     */
+    protected function loadFriends()
+    {
+        if ( ! array_key_exists('App\FriendsUsers', $this->relations))
+        {
+            $friends = $this->mergeFriends();
+
+            $this->setRelation('App\FriendsUsers', $friends);
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function mergeFriends()
+    {
+        return $this->friendsOfMine->merge($this->friendOf);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function friends()
+    {
+        return $this->belongsToMany('App\User', 'friends_users', 'user_id', 'friend_id')->withTimestamps();
+    }
+
+    /**
+     * @param User $user
+     */
+    public function addFriend(User $user)
+    {
+        $this->friendsOfMine()->attach($user->id);
+    }
+
+    /**
+     * @param User $user
+     */
+    public function removeFriend(User $user)
+    {
+        $this->friendsOfMine()->detach($user->id);
+        $this->friendOf()->detach($user->id);
+    }
 }
