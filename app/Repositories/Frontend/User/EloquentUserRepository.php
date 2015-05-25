@@ -4,6 +4,7 @@ use App\User;
 use App\UserProvider;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class EloquentUserRepository

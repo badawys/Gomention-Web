@@ -166,13 +166,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->friendsOfMine->merge($this->friendOf);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function friends()
-    {
-        return $this->belongsToMany('App\User', 'friends_users', 'user_id', 'friend_id')->withTimestamps();
-    }
 
     /**
      * @param User $user
@@ -189,5 +182,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $this->friendsOfMine()->detach($user->id);
         $this->friendOf()->detach($user->id);
+    }
+
+    public function acceptFriend(User $user)
+    {
+        $this->declineFriend($user);
+
+        $this->friendOf()->attach($user->id, ['accepted' => '1']);
+    }
+
+    public function declineFriend(User $user) {
+
+        $this->friendsOfMineAndNotAccepted()->detach($user->id);
+        $this->friendOfAndNotAccepted()->detach($user->id);
+
     }
 }

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Exceptions\GeneralException;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -20,14 +21,45 @@ class Friendship extends Controller {
 
         $this->user->addFriend(User::find($id));
 
-        return redirect()->back()->withFlashSuccess('Friend added successfully!');
+        return redirect()->back()->withFlashSuccess('Friend request has been sent!');
     }
 
     public function RemoveFriend ($id) {
 
         $this->user->removeFriend(User::find($id));
 
-        return redirect()->back();
+        return redirect()->back()->withFlashWarning('Friend successfully removed!');
+    }
+
+    public function AcceptFriend ($id) {
+
+        $friend = $this->user->friendOfAndNotAccepted->find($id);
+
+        if (! is_null($friend)) {
+
+            $this->user->acceptFriend($friend);
+
+            return redirect()->back()->withFlashSuccess('Friend added successfully!');
+
+        } else {
+            throw new GeneralException('Error, you don\'t have a friend request sent by this user.');
+        }
+
+    }
+
+    public function DeclineFriend ($id) {
+
+        $friend = $this->user->friendOfAndNotAccepted->find($id);
+
+        if (! is_null($friend)) {
+
+            $this->user->declineFriend($friend);
+
+            return redirect()->back()->withFlashWarning('Friend successfully removed!');
+
+        } else {
+            throw new GeneralException('Error, you don\'t have a friend request sent by this user.');
+        }
     }
 
     public function GetFriends (){

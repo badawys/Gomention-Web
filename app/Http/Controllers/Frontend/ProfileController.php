@@ -34,8 +34,19 @@ class ProfileController extends Controller {
 
     public function show ($id, UserContract $users) {
 
+        //Check if the
+        $isAccepted = true;
+        $isRequest = true;
+
+        if (Auth::user()->friendsOfMineAndNotAccepted->find($id))
+            $isAccepted = false;
+        if (Auth::user()->friendOfAndNotAccepted->find($id))
+            $isRequest = false;
+
         return view('frontend.user.profile.show')
             ->withUser($users->findOrThrowException($id, false))
-            ->with('isFriend', Auth::user()->friends->find($id));
+            ->with('isFriend', Auth::user()->friends->find($id))
+            ->with('isAccepted', $isAccepted )
+            ->with('isRequest', $isRequest );
     }
 }

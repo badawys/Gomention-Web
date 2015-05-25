@@ -7,13 +7,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/friends/list/to_me', 'Friendship@GetFriendsAddedToUser' );
     Route::get('/friends/add/{id}', [ 'as' => 'AddFriend', 'uses' => 'Friendship@AddFriend']);
     Route::get('/friends/remove/{id}', [ 'as' => 'RemoveFriend', 'uses' => 'Friendship@RemoveFriend']);
+    Route::get('/friends/accept/{id}', [ 'as' => 'AcceptFriend', 'uses' => 'Friendship@AcceptFriend']);
+    Route::get('/friends/decline/{id}', [ 'as' => 'DeclineFriend', 'uses' => 'Friendship@DeclineFriend']);
     Route::get('/friends/requests', 'Friendship@GetFriendsRequests' );
     Route::get('/friends/requests/sent', 'Friendship@GetFriendsSentRequests' );
 
 });
 
 
-Route::get('/friends/', function()
+/*Route::get('/friends/', function()
 {
 
     //Add Friend
@@ -42,7 +44,7 @@ Route::get('/friends/', function()
     // Check the accepted value
     /*$isAccepted = \App\User::find(3)->friends->first()->pivot->accepted;*/
 
-});
+//});
 
 /**
  * Frontend Routes
