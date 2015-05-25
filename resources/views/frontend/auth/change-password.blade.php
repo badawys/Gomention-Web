@@ -10,36 +10,40 @@
 
 				<div class="panel-body">
 
-                       {!! Form::open(['route' => ['password.change'], 'class' => 'form-horizontal']) !!}
+                {!! Form::open(['route' => ['password.change'], 'class' => 'form-horizontal']) !!}
 
-                              <div class="form-group">
-                                      <label class="col-md-4 control-label">Old Password</label>
-                                      <div class="col-md-6">
-                                          {!! Form::input('password', 'old_password', null, ['class' => 'form-control']) !!}
-                                      </div>
-                              </div>
+                    @if($user->pass_set)
 
-                              <div class="form-group">
-                                    <label class="col-md-4 control-label">New Password</label>
-                                    <div class="col-md-6">
-                                        {!! Form::input('password', 'password', null, ['class' => 'form-control']) !!}
-                                    </div>
-                              </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Old Password</label>
+                        <div class="col-md-6">
+                          {!! Form::input('password', 'old_password', null, ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
 
-                              <div class="form-group">
-                                    <label class="col-md-4 control-label">Confirm New Password</label>
-                                    <div class="col-md-6">
-                                        {!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control']) !!}
-                                    </div>
-                              </div>
+                    @endif
 
-                              <div class="form-group">
-                                  <div class="col-md-6 col-md-offset-4">
-                                      {!! Form::submit('Change Password', ['class' => 'btn btn-primary']) !!}
-                                  </div>
-                              </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">New Password</label>
+                        <div class="col-md-6">
+                            {!! Form::input('password', 'password', null, ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
 
-                       {!! Form::close() !!}
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Confirm New Password</label>
+                        <div class="col-md-6">
+                            {!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-md-6 col-md-offset-4">
+                          {!! Form::submit('Change Password', ['class' => 'btn btn-primary']) !!}
+                      </div>
+                    </div>
+
+                {!! Form::close() !!}
 
 				</div><!--panel body-->
 

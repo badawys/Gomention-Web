@@ -28,6 +28,13 @@
                                   </div>
                               @endif
 
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Bio</label>
+                                <div class="col-md-6">
+                                    {!! Form::textarea('bio', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+
                               <div class="form-group">
                                   <div class="col-md-6 col-md-offset-4">
                                       {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

@@ -45,6 +45,7 @@ class EloquentUserRepository implements UserContract {
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => $provider ? null : $data['password'],
+            'pass_set' => $provider ? 0 : 1,
 			'confirmation_code' => md5(uniqid(mt_rand(), true)),
 			'confirmed' => config('access.users.confirm_email') ? 0 : 1,
 		]);
@@ -139,6 +140,7 @@ class EloquentUserRepository implements UserContract {
 	public function updateProfile($id, $input) {
 		$user = $this->findOrThrowException($id);
 		$user->name = $input['name'];
+        $user->bio = $input['bio'];
 
 		if ($user->canChangeEmail()) {
 			//Address is not current address
@@ -163,7 +165,13 @@ class EloquentUserRepository implements UserContract {
 	public function changePassword($input) {
 		$user = $this->findOrThrowException(auth()->id());
 
-		if (\Hash::check($input['old_password'], $user->password)) {
+        if (!$user->pass_set) {
+            $user->password = $input['password'];
+            $user->pass_set = '1';
+            return $user->save();
+        }
+
+        if (\Hash::check($input['old_password'], $user->password)) {
 			//Passwords are hashed on the model
 			$user->password = $input['password'];
 			return $user->save();

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\PasswordBroker;
 use App\Repositories\Frontend\User\UserContract;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use App\Http\Requests\Frontend\Access\ChangePasswordRequest;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -61,7 +62,7 @@ class PasswordController extends Controller {
 	 * @return \Illuminate\View\View
 	 */
 	public function getChangePassword() {
-		return view('frontend.auth.change-password');
+		return view('frontend.auth.change-password')->withUser(Auth::user());
 	}
 
 	/**
@@ -69,6 +70,7 @@ class PasswordController extends Controller {
 	 * @return mixed
 	 */
 	public function postChangePassword(ChangePasswordRequest $request) {
+
 		$this->user->changePassword($request->all());
 		return redirect()->route('frontend.dashboard')->withFlashSuccess("Password successfully changed");
 	}

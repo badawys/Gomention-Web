@@ -32,6 +32,10 @@
                                         <th>Created At</th>
                                         <td>{!! $user->created_at->diffForHumans() !!}</td>
                                     </tr>
+                                    <tr>
+                                        <th>Bio</th>
+                                        <td>{!! $user->bio !!}</td>
+                                    </tr>
                                     @if (Auth::user()->id != $user->id)
                                         <tr>
                                             <th>Actions</th>
