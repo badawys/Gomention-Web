@@ -157,11 +157,9 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\MacroServiceProvider',
+        'App\Providers\FriendshipServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 
-        /*
-         *
-         */
         'Barryvdh\Debugbar\ServiceProvider',
 	],
 

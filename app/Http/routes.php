@@ -1,50 +1,14 @@
 <?php
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['prefix' => 'friends','middleware' => 'auth'], function () {
 
-    Route::get('/friends/list', 'Friendship@GetFriends' );
-    Route::get('/friends/list/by_me', 'Friendship@GetFriendsAddedByUser' );
-    Route::get('/friends/list/to_me', 'Friendship@GetFriendsAddedToUser' );
-    Route::get('/friends/add/{id}', [ 'as' => 'AddFriend', 'uses' => 'Friendship@AddFriend']);
-    Route::get('/friends/remove/{id}', [ 'as' => 'RemoveFriend', 'uses' => 'Friendship@RemoveFriend']);
-    Route::get('/friends/accept/{id}', [ 'as' => 'AcceptFriend', 'uses' => 'Friendship@AcceptFriend']);
-    Route::get('/friends/decline/{id}', [ 'as' => 'DeclineFriend', 'uses' => 'Friendship@DeclineFriend']);
-    Route::get('/friends/requests', 'Friendship@GetFriendsRequests' );
-    Route::get('/friends/requests/sent', 'Friendship@GetFriendsSentRequests' );
-
+    Route::get('/add/{id}', [ 'as' => 'AddFriend', 'uses' => 'Friendship@AddFriend']);
+    Route::get('/remove/{id}', [ 'as' => 'RemoveFriend', 'uses' => 'Friendship@RemoveFriend']);
+    Route::get('/accept/{id}', [ 'as' => 'AcceptFriend', 'uses' => 'Friendship@AcceptFriend']);
+    Route::get('/decline/{id}', [ 'as' => 'DeclineFriend', 'uses' => 'Friendship@DeclineFriend']);
+    Route::get('/remove_request/{id}', [ 'as' => 'RemoveFriendRequest', 'uses' => 'Friendship@RemoveFriendRequest']);
 });
 
-
-/*Route::get('/friends/', function()
-{
-
-    //Add Friend
-    /*$user = \App\User::find(4);
-    \App\User::find(3)->addFriend($user);*/
-
-    //Remove Friend
-    /*$user = \App\User::find(4);
-    \App\User::find(3)->removeFriend($user);*/
-
-    //Get  All friendship list
-    /*$user = \App\User::find(3)->friends->toArray();*/
-
-    //Get  all friendship that user started
-    /*$user = \App\User::find(3)->friendsOfMine->toArray();*/
-
-    //Get  all friendship that user was invited to
-    /*$user = \App\User::find(3)->friendOf->toArray();*/
-
-    //Get  all friendship that user started and not accepted
-    /*$user = \App\User::find(3)->friendsOfMineAndNotAccepted->toArray();*/
-
-    //Get  all friendship that user was invited to and not accepted
-    /*$user = \App\User::find(3)->friendOfAndNotAccepted->toArray();*/
-
-    // Check the accepted value
-    /*$isAccepted = \App\User::find(3)->friends->first()->pivot->accepted;*/
-
-//});
 
 /**
  * Frontend Routes

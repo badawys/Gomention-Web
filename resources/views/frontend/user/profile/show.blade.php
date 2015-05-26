@@ -43,7 +43,7 @@
                                                 @if ($isFriend)
                                                     <a href="{!!route('RemoveFriend', $user->id)!!}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Friends</a>
                                                 @elseif (!$isAccepted)
-                                                    <a href="{!!route('RemoveFriend', $user->id)!!}" class="btn btn-warning btn-xs">Friend Request Sent</a>
+                                                    <a href="{!!route('RemoveFriendRequest', $user->id)!!}" class="btn btn-warning btn-xs">Friend Request Sent</a>
                                                 @elseif (!$isRequest)
                                                     <a href="{!!route('AcceptFriend', $user->id)!!}" class="btn btn-success btn-xs">Confirm Friend Request</a>
                                                     <a href="{!!route('DeclineFriend', $user->id)!!}" class="btn btn-danger btn-xs">Remove</a>
