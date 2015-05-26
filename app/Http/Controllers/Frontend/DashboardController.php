@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Frontend\Friendship\FriendshipContract;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -12,12 +13,12 @@ class DashboardController extends Controller {
 	/**
 	 * @return mixed
 	 */
-	public function index()
+	public function index(FriendshipContract $friendship)
 	{
 
 		return view('frontend.user.dashboard')
 			->withUser(auth()->user())
-            ->with('friends', Auth::user()->friends)
-            ->with('requests', Auth::user()->friendOfAndNotAccepted);
+            ->with('friends', $friendship->getAllFriends())
+            ->with('requests', $friendship->getFriendsRequests());
 	}
 }

@@ -31,6 +31,7 @@
                                     <li role="presentation" class="divider"></li>
 							        {{-- This can also be @role('Administrator') instead --}}
 							        <li>{!! link_to_route('backend.dashboard', 'Administration') !!}</li>
+                                    <li>{!! link_to_route('Logs', 'Logs') !!}</li>
 							    @endpermission
                                 <li role="presentation" class="divider"></li>
 								<li>{!! link_to('auth/logout', 'Logout') !!}</li>

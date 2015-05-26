@@ -52,7 +52,7 @@ class EloquentFriendshipRepository implements FriendshipContract {
      */
     public function getFriendsRequests()
     {
-        return $this->user->friendsOfMineAndNotAccepted->all();
+        return $this->user->friendOfAndNotAccepted->all();
     }
 
     /**
@@ -96,7 +96,7 @@ class EloquentFriendshipRepository implements FriendshipContract {
      */
     public function getFriendsInvitations()
     {
-        return $this->user->friendOfAndNotAccepted->all();
+        return $this->user->friendsOfMineAndNotAccepted->all();
     }
 
     /**

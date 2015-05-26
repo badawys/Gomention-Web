@@ -161,6 +161,7 @@ return [
 		'Laravel\Socialite\SocialiteServiceProvider',
 
         'Barryvdh\Debugbar\ServiceProvider',
+        'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider',
 	],
 
 	/*

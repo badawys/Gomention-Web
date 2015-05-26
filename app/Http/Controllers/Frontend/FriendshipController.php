@@ -1,11 +1,16 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Frontend;
 
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Repositories\Frontend\Friendship\FriendshipContract;
 
-class Friendship extends Controller {
+/**
+ * Class FriendshipController
+ * @package App\Http\Controllers\Frontend
+ */
+class FriendshipController extends Controller {
 
     /**
      * @var FriendshipContract
@@ -72,7 +77,10 @@ class Friendship extends Controller {
         return $this->friendship->getAllFriends();
     }
 
-
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function RemoveFriendRequest($id) {
 
         $this->friendship->removeFriendInvitation($id);
