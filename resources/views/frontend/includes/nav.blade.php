@@ -7,7 +7,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{!!url('/')!!}">{{app_name()}}</a>
+				<a class="navbar-brand" href="{!!url('/')!!}">
+                    <img alt="Brand" src="{!!asset('img/frontend/logo.jpg')!!}">
+                </a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

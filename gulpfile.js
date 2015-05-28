@@ -7,9 +7,7 @@ elixir(function(mix) {
         .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/fonts')
 
         .sass([ // Process front-end stylesheets
-                //'frontend/main.scss',
-                'frontend/_bootswatch.scss',
-                'frontend/_variables.scss'
+                'frontend/main.scss'
             ], 'resources/assets/css/frontend')
         .styles([  // Combine pre-processed CSS files
                 'frontend/main.css'

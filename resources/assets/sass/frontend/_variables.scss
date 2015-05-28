@@ -14,7 +14,7 @@ $gray:                   #666 !default;
 $gray-light:             #bbb !default;
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         #2196F3 !default;
+$brand-primary:         #00aeef !default;
 $brand-success:         #4CAF50 !default;
 $brand-info:            #9C27B0 !default;
 $brand-warning:         #ff9800 !default;
@@ -26,7 +26,7 @@ $brand-danger:          #e51c23 !default;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #fff !default;
+$body-bg:               #fcfcfc !default;
 //** Global text color on `<body>`.
 $text-color:            $gray !default;
 
@@ -765,7 +765,7 @@ $well-border:                 transparent !default;
 $badge-color:                 #fff !default;
 //** Linked badge text color on hover
 $badge-link-hover-color:      #fff !default;
-$badge-bg:                    $gray-light !default;
+$badge-bg:                    $brand-primary !default;
 
 //** Badge text color in active nav link
 $badge-active-color:          $link-color !default;
