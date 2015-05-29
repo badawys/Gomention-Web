@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="_token" content="{{ csrf_token() }}" />
         <title>@yield('title', app_name())</title>
-        <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('author', 'Anthony Rappa')">
+        <meta name="description" content="@yield('meta_description', 'Gomention\'s mission is to give the people an opportunity to mention anybody at anything in the world.')">
+        <meta name="author" content="@yield('author', 'Gomention Teem')">
         @yield('meta')
 
         @yield('before-styles-end')
