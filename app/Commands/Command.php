@@ -1,3 +1,3 @@
-<?php namespace App\Commands;
+<?php namespace Gomention\Commands;
 
 abstract class Command {}

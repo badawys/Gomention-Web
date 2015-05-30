@@ -1,10 +1,10 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php namespace Gomention\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use Gomention\Http\Controllers\Controller;
 
 /**
  * Class FrontendController
- * @package App\Http\Controllers
+ * @package Gomention\Http\Controllers
  */
 class FrontendController extends Controller {
 

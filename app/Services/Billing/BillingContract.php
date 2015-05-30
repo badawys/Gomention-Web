@@ -1,8 +1,8 @@
-<?php namespace App\Services\Billing;
+<?php namespace Gomention\Services\Billing;
 
 /**
  * Interface BillingContract
- * @package App\Services\Billing
+ * @package Gomention\Services\Billing
  */
 interface BillingContract {
 

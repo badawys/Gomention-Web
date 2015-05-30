@@ -1,4 +1,4 @@
-<?php namespace App\Providers;
+<?php namespace Gomention\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -14,11 +14,11 @@ class EventServiceProvider extends ServiceProvider {
 		/**
 		 * Frontend Events
 		 */
-		'App\Events\Frontend\Auth\UserLoggedIn' => [
-			'App\Handlers\Events\Frontend\Auth\UserLoggedInHandler',
+		'Gomention\Events\Frontend\Auth\UserLoggedIn' => [
+			'Gomention\Handlers\Events\Frontend\Auth\UserLoggedInHandler',
 		],
-		'App\Events\Frontend\Auth\UserLoggedOut' => [
-			'App\Handlers\Events\Frontend\Auth\UserLoggedOutHandler',
+		'Gomention\Events\Frontend\Auth\UserLoggedOut' => [
+			'Gomention\Handlers\Events\Frontend\Auth\UserLoggedOutHandler',
 		],
 	];
 

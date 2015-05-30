@@ -1,8 +1,8 @@
-<?php namespace App\Services\Access\Traits;
+<?php namespace Gomention\Services\Access\Traits;
 
 /**
  * Class AccessRoute
- * @package App\Services\Access\Traits
+ * @package Gomention\Services\Access\Traits
  */
 trait AccessRoute {
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class FriendshipServiceProvider extends ServiceProvider {
+class MentionServiceProvider extends ServiceProvider {
 
 	/**
 	 * Bootstrap the application services.
@@ -21,9 +21,9 @@ class FriendshipServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind(
-            'Gomention\Repositories\Frontend\Friendship\FriendshipContract',
-            'Gomention\Repositories\Frontend\Friendship\EloquentFriendshipRepository'
+        $this->app->bind(
+            'Gomention\Repositories\Frontend\Mention\MentionContract',
+            'Gomention\Repositories\Frontend\Mention\EloquentMentionRepository'
         );
 	}
 

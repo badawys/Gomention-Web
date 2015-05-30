@@ -1,12 +1,12 @@
-<?php namespace App\Repositories\Backend\Permission;
+<?php namespace Gomention\Repositories\Backend\Permission;
 
-use App\Permission;
-use App\Exceptions\GeneralException;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
+use Gomention\Permission;
+use Gomention\Exceptions\GeneralException;
+use Gomention\Repositories\Backend\Role\RoleRepositoryContract;
 
 /**
  * Class EloquentPermissionRepository
- * @package App\Repositories\Permission
+ * @package Gomention\Repositories\Permission
  */
 class EloquentPermissionRepository implements PermissionRepositoryContract {
 

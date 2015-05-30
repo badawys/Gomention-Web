@@ -1,6 +1,6 @@
-<?php namespace App\Http\Requests\Frontend\Access;
+<?php namespace Gomention\Http\Requests\Frontend\Access;
 
-use App\Http\Requests\Request;
+use Gomention\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ChangePasswordRequest extends Request {

@@ -1,14 +1,14 @@
-<?php namespace App\Http\Controllers\Backend\Access;
+<?php namespace Gomention\Http\Controllers\Backend\Access;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
-use App\Http\Requests\Backend\Access\Role\CreateRoleRequest;
-use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
+use Gomention\Http\Controllers\Controller;
+use Gomention\Repositories\Backend\Role\RoleRepositoryContract;
+use Gomention\Repositories\Backend\Permission\PermissionRepositoryContract;
+use Gomention\Http\Requests\Backend\Access\Role\CreateRoleRequest;
+use Gomention\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
 
 /**
  * Class RoleController
- * @package App\Http\Controllers\Access
+ * @package Gomention\Http\Controllers\Access
  */
 class RoleController extends Controller {
 

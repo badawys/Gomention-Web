@@ -1,8 +1,8 @@
-<?php namespace App\Services\Access\Facades;
+<?php namespace Gomention\Services\Access\Facades;
 
 /**
  * Class Access
- * @package App\Services\Access\Facades
+ * @package Gomention\Services\Access\Facades
  */
 class Access extends \Illuminate\Support\Facades\Facade
 {

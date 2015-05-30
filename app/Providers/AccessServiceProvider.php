@@ -1,12 +1,12 @@
-<?php namespace App\Providers;
+<?php namespace Gomention\Providers;
 
-use App\Services\Access\Access;
+use Gomention\Services\Access\Access;
 use Illuminate\Support\ServiceProvider;
-use App\Blade\Access\AccessBladeExtender;
+use Gomention\Blade\Access\AccessBladeExtender;
 
 /**
  * Class AccessServiceProvider
- * @package App\Providers
+ * @package Gomention\Providers
  */
 class AccessServiceProvider extends ServiceProvider
 {
@@ -57,7 +57,7 @@ class AccessServiceProvider extends ServiceProvider
 		$this->app->booting(function()
 		{
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('Access', 'App\Services\Access\Facades\Access');
+			$loader->alias('Access', 'Gomention\Services\Access\Facades\Access');
 		});
 	}
 
@@ -66,23 +66,23 @@ class AccessServiceProvider extends ServiceProvider
 	 */
 	public function registerBindings() {
 		$this->app->bind(
-			'App\Repositories\Frontend\User\UserContract',
-			'App\Repositories\Frontend\User\EloquentUserRepository'
+			'Gomention\Repositories\Frontend\User\UserContract',
+			'Gomention\Repositories\Frontend\User\EloquentUserRepository'
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\User\UserContract',
-			'App\Repositories\Backend\User\EloquentUserRepository'
+			'Gomention\Repositories\Backend\User\UserContract',
+			'Gomention\Repositories\Backend\User\EloquentUserRepository'
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\Role\RoleRepositoryContract',
-			'App\Repositories\Backend\Role\EloquentRoleRepository'
+			'Gomention\Repositories\Backend\Role\RoleRepositoryContract',
+			'Gomention\Repositories\Backend\Role\EloquentRoleRepository'
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\Permission\PermissionRepositoryContract',
-			'App\Repositories\Backend\Permission\EloquentPermissionRepository'
+			'Gomention\Repositories\Backend\Permission\PermissionRepositoryContract',
+			'Gomention\Repositories\Backend\Permission\EloquentPermissionRepository'
 		);
 	}
 

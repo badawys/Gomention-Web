@@ -1,11 +1,11 @@
-<?php namespace App\Events\Frontend\Auth;
+<?php namespace Gomention\Events\Frontend\Auth;
 
-use App\Events\Event;
+use Gomention\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
 /**
  * Class UserLoggedOut
- * @package App\Events\Frontend\Auth
+ * @package Gomention\Events\Frontend\Auth
  */
 class UserLoggedOut extends Event {
 

@@ -5,7 +5,7 @@ return array(
 	/*
 	 * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
 	*/
-	'role' => 'App\Role',
+	'role' => 'Gomention\Role',
 
 	/*
 	 * Roles table used by Access to save roles to the database.
@@ -16,7 +16,7 @@ return array(
 	 * Permission model used by Access to create correct relations.
 	 * Update the permission if it is in a different namespace.
 	 */
-	'permission' => 'App\Permission',
+	'permission' => 'Gomention\Permission',
 
 	/*
 	 * Permissions table used by Access to save permissions to the database.

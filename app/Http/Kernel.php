@@ -1,4 +1,4 @@
-<?php namespace App\Http;
+<?php namespace Gomention\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -15,7 +15,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'App\Http\Middleware\VerifyCsrfToken',
+		'Gomention\Http\Middleware\VerifyCsrfToken',
 	];
 
 	/**
@@ -24,12 +24,12 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'App\Http\Middleware\Authenticate',
+		'auth' => 'Gomention\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+		'guest' => 'Gomention\Http\Middleware\RedirectIfAuthenticated',
 
-		'access.routeNeedsRole' => 'App\Http\Middleware\RouteNeedsRole',
-		'access.routeNeedsPermission' => 'App\Http\Middleware\RouteNeedsPermission',
-		'access.routeNeedsRoleOrPermission' => 'App\Http\Middleware\RouteNeedsRoleOrPermission',
+		'access.routeNeedsRole' => 'Gomention\Http\Middleware\RouteNeedsRole',
+		'access.routeNeedsPermission' => 'Gomention\Http\Middleware\RouteNeedsPermission',
+		'access.routeNeedsRoleOrPermission' => 'Gomention\Http\Middleware\RouteNeedsRoleOrPermission',
 	];
 }

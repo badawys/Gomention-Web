@@ -1,12 +1,12 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php namespace Gomention\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\Frontend\Friendship\FriendshipContract;
+use Gomention\Http\Controllers\Controller;
+use Gomention\Repositories\Frontend\Friendship\FriendshipContract;
 use Illuminate\Support\Facades\Auth;
 
 /**
  * Class DashboardController
- * @package App\Http\Controllers\Frontend
+ * @package Gomention\Http\Controllers\Frontend
  */
 class DashboardController extends Controller {
 

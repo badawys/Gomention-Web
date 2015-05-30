@@ -1,13 +1,13 @@
-<?php namespace App\Http\Controllers\Backend\Access;
+<?php namespace Gomention\Http\Controllers\Backend\Access;
 
-use App\Services\Registrar;
-use App\Http\Controllers\Controller;
-use App\Repositories\Backend\User\UserContract;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
-use App\Http\Requests\Backend\Access\User\CreateUserRequest;
-use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
-use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
+use Gomention\Services\Registrar;
+use Gomention\Http\Controllers\Controller;
+use Gomention\Repositories\Backend\User\UserContract;
+use Gomention\Repositories\Backend\Role\RoleRepositoryContract;
+use Gomention\Repositories\Backend\Permission\PermissionRepositoryContract;
+use Gomention\Http\Requests\Backend\Access\User\CreateUserRequest;
+use Gomention\Http\Requests\Backend\Access\User\UpdateUserRequest;
+use Gomention\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
 
 /**
  * Class UserController

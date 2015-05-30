@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Frontend\Friendship;
+namespace Gomention\Repositories\Frontend\Friendship;
 
 /**
  * Interface FriendshipContract
- * @package App\Repositories\Friendship
+ * @package Gomention\Repositories\Friendship
  */
 interface FriendshipContract {
 

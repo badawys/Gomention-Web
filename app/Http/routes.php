@@ -1,5 +1,19 @@
 <?php
 
+Route::get('/mentions', function (\Gomention\Repositories\Frontend\Mention\MentionContract $mention){
+
+
+    $mention->textMention(
+        '10', //Target User id
+        [
+            'text' => "Hello, this is a test for text mention using Mention service provider :)" //Mention Data
+        ]);
+
+
+    dd(Auth::user()->mentions()->get()->toArray());
+
+});
+
 Route::group(['prefix' => 'friends','middleware' => 'auth', 'namespace' => 'Frontend'], function () {
 
     Route::get('/add/{id}', [ 'as' => 'AddFriend', 'uses' => 'FriendshipController@AddFriend']);

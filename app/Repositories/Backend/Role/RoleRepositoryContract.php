@@ -1,8 +1,8 @@
-<?php namespace App\Repositories\Backend\Role;
+<?php namespace Gomention\Repositories\Backend\Role;
 
 /**
  * Interface RoleRepositoryContract
- * @package App\Repositories\Role
+ * @package Gomention\Repositories\Role
  */
 interface RoleRepositoryContract {
 

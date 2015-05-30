@@ -1,4 +1,4 @@
-<?php namespace App\Services\Access;
+<?php namespace Gomention\Services\Access;
 
 class Access
 {

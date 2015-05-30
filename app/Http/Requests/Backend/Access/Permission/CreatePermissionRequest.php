@@ -1,6 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\Permission;
+<?php namespace Gomention\Http\Requests\Backend\Access\Permission;
 
-use App\Http\Requests\Request;
+use Gomention\Http\Requests\Request;
 
 class CreatePermissionRequest extends Request {
 

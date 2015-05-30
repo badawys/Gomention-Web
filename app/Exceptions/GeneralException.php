@@ -1,3 +1,3 @@
-<?php namespace App\Exceptions;
+<?php namespace Gomention\Exceptions;
 
 class GeneralException extends \Exception {}

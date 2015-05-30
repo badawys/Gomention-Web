@@ -1,10 +1,10 @@
-<?php namespace App\Providers;
+<?php namespace Gomention\Providers;
 
-use App\Services\Macros;
+use Gomention\Services\Macros;
 
 /**
  * Class MacroServiceProvider
- * @package App\Providers
+ * @package Gomention\Providers
  */
 class MacroServiceProvider extends \Illuminate\Html\HtmlServiceProvider {
 

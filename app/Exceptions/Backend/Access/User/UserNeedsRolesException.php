@@ -1,8 +1,8 @@
-<?php namespace App\Exceptions\Backend\Access\User;
+<?php namespace Gomention\Exceptions\Backend\Access\User;
 
 /**
  * Class UserNeedsRolesException
- * @package App\Exceptions\Access
+ * @package Gomention\Exceptions\Access
  */
 class UserNeedsRolesException extends \Exception {
 

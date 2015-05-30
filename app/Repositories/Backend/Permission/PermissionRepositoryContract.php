@@ -1,8 +1,8 @@
-<?php namespace App\Repositories\Backend\Permission;
+<?php namespace Gomention\Repositories\Backend\Permission;
 
 /**
  * Interface PermissionRepositoryContract
- * @package App\Repositories\Permission
+ * @package Gomention\Repositories\Permission
  */
 interface PermissionRepositoryContract {
 

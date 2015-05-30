@@ -1,15 +1,15 @@
-<?php namespace App\Http\Controllers\Frontend\Auth;
+<?php namespace Gomention\Http\Controllers\Frontend\Auth;
 
-use App\Services\Registrar;
+use Gomention\Services\Registrar;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\Access\LoginRequest;
-use App\Http\Requests\Frontend\Access\RegisterRequest;
-use App\Exceptions\GeneralException;
+use Gomention\Http\Controllers\Controller;
+use Gomention\Http\Requests\Frontend\Access\LoginRequest;
+use Gomention\Http\Requests\Frontend\Access\RegisterRequest;
+use Gomention\Exceptions\GeneralException;
 
 /**
  * Class AuthController
- * @package App\Http\Controllers\Frontend\Auth
+ * @package Gomention\Http\Controllers\Frontend\Auth
  */
 class AuthController extends Controller {
 
@@ -86,7 +86,7 @@ class AuthController extends Controller {
 	/**
 	 * @param $token
 	 * @return mixed
-	 * @throws \App\Exceptions\GeneralException
+	 * @throws \Gomention\Exceptions\GeneralException
 	 */
 	public function confirmAccount($token) {
 		//Don't know why the exception handler is not catching this

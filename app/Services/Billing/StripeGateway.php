@@ -1,10 +1,10 @@
-<?php namespace App\Services\Billing;
+<?php namespace Gomention\Services\Billing;
 
 use Stripe, Stripe_Customer, Stripe_Charge, Stripe_Plan, Stripe_Coupon;
 
 /**
  * Class StripeGateway
- * @package App\Services\Billing
+ * @package Gomention\Services\Billing
  */
 class StripeGateway implements BillingContract {
 
