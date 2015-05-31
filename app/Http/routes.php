@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Test Routes
+ */
 Route::get('/mentions', function (\Gomention\Repositories\Frontend\Mention\MentionContract $mention){
 
 
@@ -14,25 +17,80 @@ Route::get('/mentions', function (\Gomention\Repositories\Frontend\Mention\Menti
 
 });
 
-Route::group(['prefix' => 'friends','middleware' => 'auth', 'namespace' => 'Frontend'], function () {
 
-    Route::get('/add/{id}', [ 'as' => 'AddFriend', 'uses' => 'FriendshipController@AddFriend']);
-    Route::get('/remove/{id}', [ 'as' => 'RemoveFriend', 'uses' => 'FriendshipController@RemoveFriend']);
-    Route::get('/accept/{id}', [ 'as' => 'AcceptFriend', 'uses' => 'FriendshipController@AcceptFriend']);
-    Route::get('/decline/{id}', [ 'as' => 'DeclineFriend', 'uses' => 'FriendshipController@DeclineFriend']);
-    Route::get('/remove_request/{id}', [ 'as' => 'RemoveFriendRequest', 'uses' => 'FriendshipController@RemoveFriendRequest']);
-});
+
 
 
 /**
  * Frontend Routes
- * Namespaces indicate folder structure
+ * Namespaces indicate Controllers folder structure
  */
 Route::group(['namespace' => 'Frontend'], function ()
 {
-	require_once(__DIR__ . "/Routes/Frontend/Frontend.php");
-	require_once(__DIR__ . "/Routes/Frontend/Access.php");
+
+
+    /**
+     * Frontend Controllers
+     */
+    Route::get('/', ['as' => 'home', 'uses' => 'FrontendController@index']);
+
+
+
+
+    /**
+     * These frontend controllers require the user to be logged in
+     */
+    Route::group(['middleware' => 'auth'], function ()
+    {
+        Route::get('dashboard', ['as' => 'frontend.dashboard', 'uses' => 'DashboardController@index']);
+        Route::resource('profile', 'ProfileController', ['only' => ['edit', 'update', 'show']]);
+    });
+
+
+
+
+    /**
+     * Frontend Access Controllers
+     */
+    Route::group(['namespace' => 'Auth'], function ()
+    {
+        Route::group(['middleware' => 'auth'], function ()
+        {
+            Route::get('auth/logout', 'AuthController@getLogout');
+            Route::get('auth/password/change', 'PasswordController@getChangePassword');
+            Route::post('auth/password/change', ['as' => 'password.change', 'uses' => 'PasswordController@postChangePassword']);
+        });
+
+        Route::group(['middleware' => 'guest'], function ()
+        {
+            Route::get('auth/login/{provider}', ['as' => 'auth.provider', 'uses' => 'AuthController@loginThirdParty']);
+            Route::get('account/confirm/{token}', ['as' => 'account.confirm', 'uses' => 'AuthController@confirmAccount']);
+            Route::get('account/confirm/resend/{user_id}', ['as' => 'account.confirm.resend', 'uses' => 'AuthController@resendConfirmationEmail']);
+
+            Route::controller('auth', 'AuthController');
+            Route::controller('password', 'PasswordController');
+        });
+    });
+
+
+
+
+    /**
+     * Friendship Controllers
+     */
+    Route::group(['prefix' => 'friends','middleware' => 'auth'], function () {
+
+        Route::get('/add/{id}', [ 'as' => 'AddFriend', 'uses' => 'FriendshipController@AddFriend']);
+        Route::get('/remove/{id}', [ 'as' => 'RemoveFriend', 'uses' => 'FriendshipController@RemoveFriend']);
+        Route::get('/accept/{id}', [ 'as' => 'AcceptFriend', 'uses' => 'FriendshipController@AcceptFriend']);
+        Route::get('/decline/{id}', [ 'as' => 'DeclineFriend', 'uses' => 'FriendshipController@DeclineFriend']);
+        Route::get('/remove_request/{id}', [ 'as' => 'RemoveFriendRequest', 'uses' => 'FriendshipController@RemoveFriendRequest']);
+    });
 });
+
+
+
+
 
 /**
  * Backend Routes

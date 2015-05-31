@@ -1,32 +1,36 @@
 ﻿- Web App
-* User System (Y)
-* User profile (Y)
-* Friendship (Y)
-* Link Mention
-* Photo Mention
-* Video Mention
-* Text Mention
+    * User System (Y)
+    * User profile (Y)
+    * Friendship (Y)
+    * Link Mention
+    * Photo Mention
+    * Video Mention
+    * Text Mention (For Development ONLY) (Y)
 
 - Mobile App (WP)
-* User Login
-* Mentions Feed
+    * User Login
+    * Mentions Feed
 
 -Web App and Mobile App
-* Likes and Comments
-* Groups
+    * Likes and Comments
+    * Groups
 
 - Mobile App
-* Location Mention
+    * Location Mention
 
 -Govision Web App
-* Product GV Tag
+    * Product GV Tag
 
 - Web App
-* Gomention for business portal
-++ Govision integration
+    * Gomention for business portal
+        ++ Govision integration
 
 - Mobile App
-* GV Tag Mention
+    * GV Tag Mention
 
 ***************** BETA public release*****************
- 
+
+ TODO:
+ Change landing page for who not logedin.
+ Add Mentions Feed page.
+ Add 'add mention' model for text mention (Only For Development)

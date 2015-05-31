@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Auth;
  */
 class DashboardController extends Controller {
 
-	/**
-	 * @return mixed
-	 */
+    /**
+     * @param FriendshipContract $friendship
+     * @return mixed
+     */
 	public function index(FriendshipContract $friendship)
 	{
 
