@@ -2,15 +2,15 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix
-        // Copy webfont files from /vendor directories to /public directory.
-        .copy('vendor/fortawesome/font-awesome/fonts', 'public/fonts')
-        .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/fonts')
 
         .sass([ // Process front-end stylesheets
-                'frontend/main.scss'
+                'frontend/main.scss',
+                'frontend/jasny_bootstrap/jasny-bootstrap.scss'
             ], 'resources/assets/css/frontend')
         .styles([  // Combine pre-processed CSS files
-                'frontend/main.css'
+                'frontend/styles.css',
+                'frontend/main.css',
+                'frontend/jasny-bootstrap.css'
             ], 'public/css/frontend.css', 'resources/assets/css')
         .scripts([ // Combine front-end scripts
                 'plugins.js',
@@ -31,6 +31,10 @@ elixir(function(mix) {
                 'plugins.js',
                 'backend/main.js'
             ], 'public/js/backend.js', 'resources/assets/js')
+
+        // Copy webfont files from /vendor directories to /public directory.
+        .copy('vendor/fortawesome/font-awesome/fonts', 'public/fonts')
+        .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/fonts')
 
         // Apply version control
         .version(["css/frontend.css", "js/frontend.js", "css/backend.css", "js/backend.js"]);

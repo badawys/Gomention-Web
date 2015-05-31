@@ -1,10 +1,10 @@
-<?php namespace App\Services;
+<?php namespace Gomention\Services;
 
 use Illuminate\Html\FormBuilder;
 
 /**
  * Class Macros
- * @package App\Http
+ * @package Gomention\Http
  */
 class Macros extends FormBuilder {
 

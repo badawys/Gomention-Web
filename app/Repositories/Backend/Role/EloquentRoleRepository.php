@@ -1,11 +1,11 @@
-<?php namespace App\Repositories\Backend\Role;
+<?php namespace Gomention\Repositories\Backend\Role;
 
-use App\Role;
-use App\Exceptions\GeneralException;
+use Gomention\Role;
+use Gomention\Exceptions\GeneralException;
 
 /**
  * Class EloquentRoleRepository
- * @package App\Repositories\Role
+ * @package Gomention\Repositories\Role
  */
 class EloquentRoleRepository implements RoleRepositoryContract {
 

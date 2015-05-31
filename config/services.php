@@ -30,7 +30,7 @@ return [
 	],
 
 	'stripe' => [
-		'model'  => 'App\User',
+		'model'  => 'Gomention\User',
 		'key'    => env('STRIPE_KEY'),
 		'secret' => env('STRIPE_SECRET'),
 	],

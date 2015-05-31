@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace Gomention;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -6,7 +6,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use App\Services\Access\Traits\UserHasRole;
+use Gomention\Services\Access\Traits\UserHasRole;
 
 /**
  * Class User
@@ -48,8 +48,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function providers() {
-		return $this->hasMany('App\UserProvider');
+		return $this->hasMany('Gomention\UserProvider');
 	}
+
 
 	/**
 	 * Hash the users password
@@ -88,7 +89,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     function friendsOfMine()
     {
-        return $this->belongsToMany('App\User', 'friends_users', 'user_id', 'friend_id')
+        return $this->belongsToMany('Gomention\User', 'friends_users', 'user_id', 'friend_id')
             ->wherePivot('accepted', '=', 1)
             ->withPivot('accepted')
             ->withTimestamps();
@@ -101,7 +102,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     function friendOf()
     {
-        return $this->belongsToMany('App\User', 'friends_users', 'friend_id', 'user_id')
+        return $this->belongsToMany('Gomention\User', 'friends_users', 'friend_id', 'user_id')
             ->wherePivot('accepted', '=', 1)
             ->withPivot('accepted')
             ->withTimestamps();
@@ -114,7 +115,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     function friendsOfMineAndNotAccepted()
     {
-        return $this->belongsToMany('App\User', 'friends_users', 'user_id', 'friend_id')
+        return $this->belongsToMany('Gomention\User', 'friends_users', 'user_id', 'friend_id')
             ->wherePivot('accepted', '=', 0)
             ->withPivot('accepted')
             ->withTimestamps();
@@ -127,7 +128,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     function friendOfAndNotAccepted()
     {
-        return $this->belongsToMany('App\User', 'friends_users', 'friend_id', 'user_id')
+        return $this->belongsToMany('Gomention\User', 'friends_users', 'friend_id', 'user_id')
             ->wherePivot('accepted', '=', 0)
             ->withPivot('accepted')
             ->withTimestamps();
@@ -140,9 +141,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function getFriendsAttribute()
     {
-        if ( ! array_key_exists('App\FriendsUsers', $this->relations)) $this->loadFriends();
+        if ( ! array_key_exists('Gomention\FriendsUsers', $this->relations)) $this->loadFriends();
 
-        return $this->getRelation('App\FriendsUsers');
+        return $this->getRelation('Gomention\FriendsUsers');
     }
 
     /**
@@ -150,11 +151,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected function loadFriends()
     {
-        if ( ! array_key_exists('App\FriendsUsers', $this->relations))
+        if ( ! array_key_exists('Gomention\FriendsUsers', $this->relations))
         {
             $friends = $this->mergeFriends();
 
-            $this->setRelation('App\FriendsUsers', $friends);
+            $this->setRelation('Gomention\FriendsUsers', $friends);
         }
     }
 
@@ -197,4 +198,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $this->friendOfAndNotAccepted()->detach($user->id);
 
     }
+
+    public function mentions () {
+
+        return $this->hasMany('Gomention\Mention', 'by_user_id')
+            ->orWhere('to_user_id', $this->id)
+            ->orderBy('created_at', 'desc');
+    }
+
 }

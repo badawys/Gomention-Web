@@ -1,4 +1,4 @@
-<?php namespace App\Providers;
+<?php namespace Gomention\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -22,8 +22,8 @@ class FriendshipServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app->bind(
-            'App\Repositories\Frontend\Friendship\FriendshipContract',
-            'App\Repositories\Frontend\Friendship\EloquentFriendshipRepository'
+            'Gomention\Repositories\Frontend\Friendship\FriendshipContract',
+            'Gomention\Repositories\Frontend\Friendship\EloquentFriendshipRepository'
         );
 	}
 

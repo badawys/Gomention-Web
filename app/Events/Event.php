@@ -1,3 +1,3 @@
-<?php namespace App\Events;
+<?php namespace Gomention\Events;
 
 abstract class Event {}

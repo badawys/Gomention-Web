@@ -1,13 +1,13 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php namespace Gomention\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\Frontend\User\UserContract;
-use App\Http\Requests\Frontend\User\UpdateProfileRequest;
+use Gomention\Http\Controllers\Controller;
+use Gomention\Repositories\Frontend\User\UserContract;
+use Gomention\Http\Requests\Frontend\User\UpdateProfileRequest;
 use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ProfileController
- * @package App\Http\Controllers\Frontend
+ * @package Gomention\Http\Controllers\Frontend
  */
 class ProfileController extends Controller {
 

@@ -1,14 +1,14 @@
-<?php namespace App\Repositories\Backend\User;
+<?php namespace Gomention\Repositories\Backend\User;
 
-use App\User;
-use App\Services\Registrar;
-use App\Exceptions\GeneralException;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
+use Gomention\User;
+use Gomention\Services\Registrar;
+use Gomention\Exceptions\GeneralException;
+use Gomention\Repositories\Backend\Role\RoleRepositoryContract;
+use Gomention\Exceptions\Backend\Access\User\UserNeedsRolesException;
 
 /**
  * Class EloquentUserRepository
- * @package App\Repositories\User
+ * @package Gomention\Repositories\User
  */
 class EloquentUserRepository implements UserContract {
 

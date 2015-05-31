@@ -1,8 +1,8 @@
-<?php namespace App\Repositories\Backend\User;
+<?php namespace Gomention\Repositories\Backend\User;
 
 /**
  * Interface UserContract
- * @package App\Repositories\User
+ * @package Gomention\Repositories\User
  */
 interface UserContract {
 

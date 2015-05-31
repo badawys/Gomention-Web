@@ -1,26 +1,25 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php namespace Gomention\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use Gomention\Http\Controllers\Controller;
+use Gomention\Repositories\Frontend\Friendship\FriendshipContract;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class FrontendController
- * @package App\Http\Controllers
+ * @package Gomention\Http\Controllers
  */
 class FrontendController extends Controller {
 
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function index()
+    /**
+     * @param FriendshipContract $friendship
+     * @return \Illuminate\View\View
+     */
+	public function index(FriendshipContract $friendship)
 	{
-		return view('frontend.index');
-	}
+        if (Auth::user())
+            return view('frontend.user.mention_feed')
+                ->withUser(auth()->user());
 
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function macros()
-	{
-		return view('frontend.macros');
+        return view('frontend.index');
 	}
 }

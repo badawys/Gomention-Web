@@ -1,11 +1,11 @@
-<?php namespace App\Blade\Access;
+<?php namespace Gomention\Blade\Access;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\View\Compilers\BladeCompiler as Compiler;
 
 /**
  * Class AccessBladeExtender
- * @package App\Blade\Access
+ * @package Gomention\Blade\Access
  */
 class AccessBladeExtender
 {

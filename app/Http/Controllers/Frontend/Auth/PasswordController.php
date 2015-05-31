@@ -1,17 +1,17 @@
-<?php namespace App\Http\Controllers\Frontend\Auth;
+<?php namespace Gomention\Http\Controllers\Frontend\Auth;
 
-use App\Http\Controllers\Controller;
+use Gomention\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use App\Repositories\Frontend\User\UserContract;
+use Gomention\Repositories\Frontend\User\UserContract;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use App\Http\Requests\Frontend\Access\ChangePasswordRequest;
+use Gomention\Http\Requests\Frontend\Access\ChangePasswordRequest;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class PasswordController
- * @package App\Http\Controllers\Auth
+ * @package Gomention\Http\Controllers\Auth
  */
 class PasswordController extends Controller {
 

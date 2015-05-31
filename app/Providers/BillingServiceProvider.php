@@ -1,10 +1,10 @@
-<?php namespace App\Providers;
+<?php namespace Gomention\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class BillingServiceProvider
- * @package App\Providers
+ * @package Gomention\Providers
  */
 class BillingServiceProvider extends ServiceProvider {
 
@@ -22,8 +22,8 @@ class BillingServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app->bind(
-			'App\Services\Billing\BillingContract',
-			'App\Services\Billing\StripeGateway'
+			'Gomention\Services\Billing\BillingContract',
+			'Gomention\Services\Billing\StripeGateway'
 		);
 	}
 }

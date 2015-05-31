@@ -1,16 +1,16 @@
-<?php namespace App\Services;
+<?php namespace Gomention\Services;
 
-use App\User;
-use App\Exceptions\GeneralException;
-use App\Repositories\Frontend\User\UserContract;
+use Gomention\User;
+use Gomention\Exceptions\GeneralException;
+use Gomention\Repositories\Frontend\User\UserContract;
 use Illuminate\Contracts\Auth\Guard;
 use Laravel\Socialite\Contracts\Factory as Socialite;
-use App\Events\Frontend\Auth\UserLoggedIn;
-use App\Events\Frontend\Auth\UserLoggedOut;
+use Gomention\Events\Frontend\Auth\UserLoggedIn;
+use Gomention\Events\Frontend\Auth\UserLoggedOut;
 
 /**
  * Class Registrar
- * @package App\Services
+ * @package Gomention\Services
  */
 class Registrar {
 

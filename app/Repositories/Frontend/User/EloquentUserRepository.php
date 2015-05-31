@@ -1,14 +1,14 @@
-<?php namespace App\Repositories\Frontend\User;
+<?php namespace Gomention\Repositories\Frontend\User;
 
-use App\User;
-use App\UserProvider;
-use App\Exceptions\GeneralException;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
+use Gomention\User;
+use Gomention\UserProvider;
+use Gomention\Exceptions\GeneralException;
+use Gomention\Repositories\Backend\Role\RoleRepositoryContract;
 use Illuminate\Support\Facades\Hash;
 
 /**
  * Class EloquentUserRepository
- * @package App\Repositories\User
+ * @package Gomention\Repositories\User
  */
 class EloquentUserRepository implements UserContract {
 

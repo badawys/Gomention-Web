@@ -1,6 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\User;
+<?php namespace Gomention\Http\Requests\Backend\Access\User;
 
-use App\Http\Requests\Request;
+use Gomention\Http\Requests\Request;
 
 class UpdateUserRequest extends Request {
 

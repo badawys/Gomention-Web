@@ -149,15 +149,16 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'App\Providers\AccessServiceProvider',
-		'App\Providers\AppServiceProvider',
-		'App\Providers\BillingServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\ConfigServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\RouteServiceProvider',
-		'App\Providers\MacroServiceProvider',
-        'App\Providers\FriendshipServiceProvider',
+		'Gomention\Providers\AccessServiceProvider',
+		'Gomention\Providers\AppServiceProvider',
+		'Gomention\Providers\BillingServiceProvider',
+		'Gomention\Providers\BusServiceProvider',
+		'Gomention\Providers\ConfigServiceProvider',
+		'Gomention\Providers\EventServiceProvider',
+		'Gomention\Providers\RouteServiceProvider',
+		'Gomention\Providers\MacroServiceProvider',
+        'Gomention\Providers\FriendshipServiceProvider',
+        'Gomention\Providers\MentionServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 
         'Barryvdh\Debugbar\ServiceProvider',

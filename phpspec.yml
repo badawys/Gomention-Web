@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: Gomention
+        psr4_prefix: Gomention
         src_path: app

@@ -1,14 +1,14 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php namespace Gomention\Http\Controllers\Frontend;
 
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
+use Gomention\Http\Controllers\Controller;
+use Gomention\Http\Requests;
 
-use App\Repositories\Frontend\Friendship\FriendshipContract;
+use Gomention\Repositories\Frontend\Friendship\FriendshipContract;
 
 /**
  * Class FriendshipController
- * @package App\Http\Controllers\Frontend
+ * @package Gomention\Http\Controllers\Frontend
  */
 class FriendshipController extends Controller {
 

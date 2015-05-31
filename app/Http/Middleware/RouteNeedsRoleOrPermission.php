@@ -1,11 +1,11 @@
-<?php namespace App\Http\Middleware;
+<?php namespace Gomention\Http\Middleware;
 
 use Closure;
-use App\Services\Access\Traits\AccessRoute;
+use Gomention\Services\Access\Traits\AccessRoute;
 
 /**
  * Class RouteNeedsRole
- * @package App\Http\Middleware
+ * @package Gomention\Http\Middleware
  */
 class RouteNeedsRoleOrPermission {
 

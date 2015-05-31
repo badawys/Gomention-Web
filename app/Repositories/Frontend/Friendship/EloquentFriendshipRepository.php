@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Frontend\Friendship;
+namespace Gomention\Repositories\Frontend\Friendship;
 
 
-use App\Exceptions\GeneralException;
-use App\User;
+use Gomention\Exceptions\GeneralException;
+use Gomention\User;
 use Illuminate\Support\Facades\Auth;
 
 /**

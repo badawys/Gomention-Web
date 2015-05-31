@@ -1,6 +1,6 @@
-<?php namespace App\Handlers\Events\Frontend\Auth;
+<?php namespace Gomention\Handlers\Events\Frontend\Auth;
 
-use App\Events\Frontend\Auth\UserLoggedIn;
+use Gomention\Events\Frontend\Auth\UserLoggedIn;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 

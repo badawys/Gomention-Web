@@ -1,6 +1,6 @@
-<?php namespace App\Http\Requests\Frontend\User;
+<?php namespace Gomention\Http\Requests\Frontend\User;
 
-use App\Http\Requests\Request;
+use Gomention\Http\Requests\Request;
 
 class UpdateProfileRequest extends Request {
 
