@@ -7,9 +7,10 @@ Route::get('/mentions', function (\Gomention\Repositories\Frontend\Mention\Menti
 
 
     $mention->textMention(
-        '10', //Target User id
+        '3', //Target User id
         [
-            'text' => "Hello, this is a test for text mention using Mention service provider :)" //Mention Data
+            'type' => 'video',
+            'src' => "https://www.youtube.com/embed/Ue4PCI0NamI" //Mention Data
         ]);
 
 

@@ -17,8 +17,9 @@ class FrontendController extends Controller {
 	public function index(FriendshipContract $friendship)
 	{
         if (Auth::user())
-            return view('frontend.user.mention_feed')
-                ->withUser(auth()->user());
+            return view('frontend.user.mention.feed')
+                ->withUser(auth()->user())
+                ->withMentions(Auth::user()->mentions()->get());
 
         return view('frontend.index');
 	}

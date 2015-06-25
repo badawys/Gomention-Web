@@ -4103,7 +4103,7 @@ tbody.collapse.in {
   .breadcrumb > li {
     display: inline-block; }
     .breadcrumb > li + li:before {
-      content: "/ ";
+      content: "/\\00a0";
       padding: 0 5px;
       color: #ccc; }
   .breadcrumb > .active {
@@ -7830,13 +7830,18 @@ input[type=number],
   .input-group-sm > .input-group-btn > input[type=number].btn,
   [type=text].form-control.input-sm,
   .input-group-sm > [type=text].form-control,
+  .input-group-sm > .input-group-btn > [type=text].form-control.btn,
   [type=password].form-control.input-sm,
   .input-group-sm > [type=password].form-control,
+  .input-group-sm > .input-group-btn > [type=password].form-control.btn,
   [type=email].form-control.input-sm,
   .input-group-sm > [type=email].form-control,
+  .input-group-sm > .input-group-btn > [type=email].form-control.btn,
   [type=tel].form-control.input-sm,
   .input-group-sm > [type=tel].form-control,
-  [contenteditable].form-control.input-sm, .input-group-sm > [contenteditable].form-control {
+  .input-group-sm > .input-group-btn > [type=tel].form-control.btn,
+  [contenteditable].form-control.input-sm, .input-group-sm > [contenteditable].form-control,
+  .input-group-sm > .input-group-btn > [contenteditable].form-control.btn {
     font-size: 12px; }
   textarea.input-lg,
   .input-group-lg > textarea.form-control,
@@ -7866,13 +7871,18 @@ input[type=number],
   .input-group-lg > .input-group-btn > input[type=number].btn,
   [type=text].form-control.input-lg,
   .input-group-lg > [type=text].form-control,
+  .input-group-lg > .input-group-btn > [type=text].form-control.btn,
   [type=password].form-control.input-lg,
   .input-group-lg > [type=password].form-control,
+  .input-group-lg > .input-group-btn > [type=password].form-control.btn,
   [type=email].form-control.input-lg,
   .input-group-lg > [type=email].form-control,
+  .input-group-lg > .input-group-btn > [type=email].form-control.btn,
   [type=tel].form-control.input-lg,
   .input-group-lg > [type=tel].form-control,
-  [contenteditable].form-control.input-lg, .input-group-lg > [contenteditable].form-control {
+  .input-group-lg > .input-group-btn > [type=tel].form-control.btn,
+  [contenteditable].form-control.input-lg, .input-group-lg > [contenteditable].form-control,
+  .input-group-lg > .input-group-btn > [contenteditable].form-control.btn {
     font-size: 17px; }
 
 select,

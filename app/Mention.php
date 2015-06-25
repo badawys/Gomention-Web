@@ -32,11 +32,21 @@ class Mention extends Model {
     ];
 
     /**
+     * The attributes are hidden from results.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'by_user_id',
+        'to_user_id'
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function by_user (){
 
-        return $this->belongsTo('Gomention\User', 'id', 'by_user_id');
+        return $this->belongsTo('Gomention\User', 'by_user_id', 'id');
 
     }
 
@@ -45,7 +55,7 @@ class Mention extends Model {
      */
     public function to_user (){
 
-        return $this->belongsTo('Gomention\User', 'id', 'to_user_id');
+        return $this->belongsTo('Gomention\User', 'to_user_id', 'id');
 
     }
 
