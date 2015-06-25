@@ -1,4 +1,4 @@
-<?php namespace Gomention\Handlers\Events\Frontend\Auth;
+<?php namespace Gomention\Listeners\Frontend\Auth;
 
 use Gomention\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Queue\InteractsWithQueue;

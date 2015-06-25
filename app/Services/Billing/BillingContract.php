@@ -2,7 +2,7 @@
 
 /**
  * Interface BillingContract
- * @package Gomention\Services\Billing
+ * @package App\Services\Billing
  */
 interface BillingContract {
 

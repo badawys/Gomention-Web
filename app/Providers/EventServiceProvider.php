@@ -14,11 +14,11 @@ class EventServiceProvider extends ServiceProvider {
 		/**
 		 * Frontend Events
 		 */
-		'Gomention\Events\Frontend\Auth\UserLoggedIn' => [
-			'Gomention\Handlers\Events\Frontend\Auth\UserLoggedInHandler',
+		'App\Events\Frontend\Auth\UserLoggedIn' => [
+			'App\Listeners\Frontend\Auth\UserLoggedInHandler',
 		],
-		'Gomention\Events\Frontend\Auth\UserLoggedOut' => [
-			'Gomention\Handlers\Events\Frontend\Auth\UserLoggedOutHandler',
+		'App\Events\Frontend\Auth\UserLoggedOut' => [
+			'App\Listeners\Frontend\Auth\UserLoggedOutHandler',
 		],
 	];
 

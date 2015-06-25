@@ -2,7 +2,7 @@
 
 /**
  * Class Access
- * @package Gomention\Services\Access\Facades
+ * @package App\Services\Access\Facades
  */
 class Access extends \Illuminate\Support\Facades\Facade
 {

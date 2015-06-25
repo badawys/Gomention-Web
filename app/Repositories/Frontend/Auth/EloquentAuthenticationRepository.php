@@ -1,4 +1,4 @@
-<?php namespace Gomention\Services;
+<?php namespace Gomention\Repositories\Frontend\Auth;
 
 use Gomention\User;
 use Gomention\Exceptions\GeneralException;
@@ -10,9 +10,9 @@ use Gomention\Events\Frontend\Auth\UserLoggedOut;
 
 /**
  * Class Registrar
- * @package Gomention\Services
+ * @package App\Services
  */
-class Registrar {
+class EloquentAuthenticationRepository implements AuthenticationContract {
 
 	/**
 	 * @var Socialite
@@ -113,7 +113,7 @@ class Registrar {
 	 * @param $provider
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
-	private function getAuthorizationFirst($provider) {
+	public function getAuthorizationFirst($provider) {
 		if ($provider == "google") {
 			/*
 			 * Only allows google to grab email address
@@ -133,7 +133,7 @@ class Registrar {
 	 * @param $provider
 	 * @return \Laravel\Socialite\Contracts\User
 	 */
-	private function getSocialUser($provider) {
+	public function getSocialUser($provider) {
 		return $this->socialite->driver($provider)->user();
 	}
 

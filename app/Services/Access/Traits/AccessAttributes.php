@@ -2,7 +2,7 @@
 
 /**
  * Class AccessAttributes
- * @package Gomention\Services\Access\Traits
+ * @package App\Services\Access\Traits
  */
 trait AccessAttributes {
 
