@@ -26,7 +26,7 @@ $brand-danger:          #e51c23 !default;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #FAFAFA !default;
+$body-bg:               #F0F0F0 !default;
 //** Global text color on `<body>`.
 $text-color:            $gray !default;
 
@@ -704,11 +704,11 @@ $panel-border-radius:         $border-radius-base !default;
 
 //** Border color for elements within panels
 $panel-inner-border:          #ddd !default;
-$panel-footer-bg:             #f5f5f5 !default;
+$panel-footer-bg:             #fff !default;
 
 $panel-default-text:          $gray-dark !default;
 $panel-default-border:        #ddd !default;
-$panel-default-heading-bg:    #f5f5f5 !default;
+$panel-default-heading-bg:    #fff !default;
 
 $panel-primary-text:          #fff !default;
 $panel-primary-border:        $brand-primary !default;

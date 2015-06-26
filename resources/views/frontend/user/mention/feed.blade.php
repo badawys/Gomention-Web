@@ -36,6 +36,7 @@
 
     <script>
         docReady( function() {
+            console.log('Ready');
             var container = document.querySelector('#container');
             var msnry = new Masonry(container, {
                 columnWidth: '.item',
