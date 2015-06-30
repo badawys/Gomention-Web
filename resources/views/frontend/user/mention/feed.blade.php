@@ -1,9 +1,5 @@
 @extends('frontend.layouts.master')
 
-@section('after-styles-end')
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.js"></script>
-@endsection
-
 @section('content')
     <div class="row">
 
@@ -33,15 +29,15 @@
 
 @section('after-scripts-end')
 
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.js"></script>
 
     <script>
-        docReady( function() {
-            console.log('Ready');
-            var container = document.querySelector('#container');
-            var msnry = new Masonry(container, {
+        $(window).on('load', function(){
+            $('#container').masonry({
+                // options
                 columnWidth: '.item',
                 itemSelector: '.item',
-                transitionDuration: 0
+                isAnimated: true
             });
         });
     </script>
