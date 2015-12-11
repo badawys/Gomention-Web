@@ -23,11 +23,11 @@ class CreateMentionsTable extends Migration {
 
             $table->foreign('by_user_id')
                 ->references('id')->on('users')
-                ->onDelete('cascade');;
+                ->onDelete('cascade');
 
             $table->foreign('to_user_id')
                 ->references('id')->on('users')
-                ->onDelete('cascade');;
+                ->onDelete('cascade');
         });
 	}
 
