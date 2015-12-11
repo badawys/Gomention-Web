@@ -24,7 +24,7 @@ interface MentionContract {
      * @param array $data
      * @return mixed
      */
-    public function linkMention(Array $data);
+    public function linkMention($to_user_id, Array $data);
 
     /**
      * @param array $data

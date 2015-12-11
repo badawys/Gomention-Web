@@ -5,6 +5,7 @@
 
     <span style="color: #f20000"><i class="fa fa-heart"></i></span>
     <span style="margin-left: 10px; color: #487cff;"><i class="fa fa-comment-o"></i> 5</span>
+    <span style="margin-left: 10px; color: #1f62f2"><i class="fa fa-check"></i> Seen</span>
 
     <div class="pull-right">
 

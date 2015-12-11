@@ -73,9 +73,10 @@ class EloquentMentionRepository implements MentionContract {
      * @param array $data
      * @return mixed
      */
-    public function linkMention(Array $data)
+    public function linkMention($to_user_id, Array $data)
     {
         // TODO: Implement linkMention() method.
+        return $this->mention('link', $to_user_id, $data);
     }
 
     /**
