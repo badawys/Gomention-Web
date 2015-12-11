@@ -39,7 +39,7 @@ class AuthController extends Controller {
             return redirect()->route('home')->withFlashSuccess("Your account was successfully created. We have sent you an e-mail to confirm your account.");
         } else {
             $this->auth->login($this->auth->create($request->all()));
-            return redirect()->route('frontend.dashboard');
+            return redirect()->route('home');
         }
     }
 
@@ -59,7 +59,7 @@ class AuthController extends Controller {
         //Don't know why the exception handler is not catching this
         try {
             $this->auth->login($request);
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         } catch (GeneralException $e) {
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
