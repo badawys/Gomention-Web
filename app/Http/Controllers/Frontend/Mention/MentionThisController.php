@@ -123,7 +123,7 @@ class MentionThisController extends Controller
         $data['cache_id'] = $cache_id;
 
         //store data into the session (to use it in friends page)
-        session(['mentionData' => $data]);
+        session()->flash('mentionData', $data);
 
         //Goto friends page
         return redirect()->route('mention.this.friends', ['link',$cached->id]);
@@ -173,6 +173,10 @@ class MentionThisController extends Controller
          *  Mention friends
          */
 
+        if (!session('mentionData'))
+            return view('frontend.user.mention.mention_this.error')
+                ->with(['error' => 'Error!']);
+
         $friendsArray = [];
 
         foreach ($friends->getAllFriends() as $friend) {
@@ -214,7 +218,7 @@ class MentionThisController extends Controller
      * @param MetaCache $data
      * @return array
      */
-    private function mentionTypes(MetaCache $data) {
+    private function mentionTypes($data) {
 
         $mentionTypes = [];
 
