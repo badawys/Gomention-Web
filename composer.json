@@ -1,8 +1,6 @@
 {
-	"name": "rappasoft/laravel-5-boilerplate",
-	"description": "The Laravel Framework Boilerplate Project.",
-	"keywords": ["framework", "laravel", "boilerplate"],
-	"license": "MIT",
+	"name": "MrPencil/Gomention",
+	"description": "Gomention Web App",
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.1.*",
@@ -15,7 +13,8 @@
 		"barryvdh/laravel-debugbar": "^2.0",
 		"rap2hpoutre/laravel-log-viewer": "^0.2.8",
         "php-curl-class/php-curl-class": "3.*",
-        "laracasts/utilities": "~2.0"
+        "laracasts/utilities": "~2.0",
+        "badawy/embedly": "1.*"
 
 	},
 	"require-dev": {
@@ -28,8 +27,7 @@
 			"database"
 		],
 		"psr-4": {
-			"Gomention\\": "app/",
-            "Badawy\\Embedly\\": "Packages/Badawy/Embedly/src"
+			"Gomention\\": "app/"
 		},
         "files": [
             "app/helpers.php"
