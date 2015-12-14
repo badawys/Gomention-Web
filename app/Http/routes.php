@@ -3,6 +3,7 @@
 /**
  * Test Routes
  */
+
 Route::get('/mention', function (\Gomention\Repositories\Frontend\Mention\MentionContract $mention){
 
 
@@ -142,6 +143,8 @@ Route::group(['namespace' => 'Frontend'], function ()
             Route::get('/article/{id}', [ 'as' => 'mention.this.article', 'uses' => 'MentionThisController@article']);
 
             Route::get('/{type}/{id}/friends', [ 'where' => ['id' => '[0-9]+'], 'as' => 'mention.this.friends', 'uses' => 'MentionThisController@friends']);
+
+            Route::post('/mention', ['as' => 'mention.this.do', 'uses' => 'MentionThisController@mention']);
         });
 
     });

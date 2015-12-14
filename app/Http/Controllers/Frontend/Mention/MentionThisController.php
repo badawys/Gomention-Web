@@ -5,6 +5,7 @@ namespace Gomention\Http\Controllers\Frontend\Mention;
 use Badawy\Embedly\Facades\Embedly;
 use Gomention\MetaCache;
 use Gomention\Repositories\Frontend\Friendship\FriendshipContract;
+use Gomention\Repositories\Frontend\Mention\MentionContract;
 use Illuminate\Http\Request;
 
 use Gomention\Http\Requests;
@@ -15,6 +16,10 @@ use Laracasts\Utilities\JavaScript\JavaScriptFacade;
 
 class MentionThisController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function start (Request $request) {
 
         $url = $request->input('url');
@@ -110,8 +115,10 @@ class MentionThisController extends Controller
             ->with('types', $mentionTypes);
     }
 
-
-
+    /**
+     * @param $cache_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function link ($cache_id) {
 
         //Get the cached version
@@ -123,12 +130,16 @@ class MentionThisController extends Controller
         $data['cache_id'] = $cache_id;
 
         //store data into the session (to use it in friends page)
-        session()->flash('mentionData', $data);
+        session(['mentionData' => $data]);
 
         //Goto friends page
         return redirect()->route('mention.this.friends', ['link',$cached->id]);
     }
 
+    /**
+     * @param $cache_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function video ($cache_id) {
 
         /**
@@ -140,6 +151,10 @@ class MentionThisController extends Controller
         return view('frontend.user.mention.mention_this.video');
     }
 
+    /**
+     * @param $cache_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function photo ($cache_id) {
 
         /**
@@ -153,6 +168,10 @@ class MentionThisController extends Controller
         return view('frontend.user.mention.mention_this.photo');
     }
 
+    /**
+     * @param $cache_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function article ($cache_id) {
 
         /**
@@ -164,14 +183,14 @@ class MentionThisController extends Controller
         return view('frontend.user.mention.mention_this.article');
     }
 
-
-
+    /**
+     * @param $cache_id
+     * @param $type
+     * @param FriendshipContract $friends
+     * @return $this
+     */
     public function friends ($cache_id, $type, FriendshipContract $friends) {
 
-        /**
-         * TODO:
-         *  Mention friends
-         */
 
         if (!session('mentionData'))
             return view('frontend.user.mention.mention_this.error')
@@ -183,6 +202,8 @@ class MentionThisController extends Controller
             $friendsArray[] = ['id' => $friend->id, 'text' => $friend->name];
         }
 
+        $friendsArray[] = ['id' => auth()->user()->id, 'text' => auth()->user()->name]; //add current user to array
+
         JavaScriptFacade::put([
             'friendsArray' => $friendsArray
         ]);
@@ -190,6 +211,24 @@ class MentionThisController extends Controller
         return view('frontend.user.mention.mention_this.friends')
             ->with('friends',$friends)
             ->with('data', session('mentionData'));
+    }
+
+    /**
+     * @param Request $request
+     * @param MentionContract $mention
+     * @return $this
+     */
+    public function mention (Request $request, MentionContract $mention) {
+
+
+        foreach($request->input('friends') as $friend_id) {
+            $mention->mention('link', $friend_id, (Array) session('mentionData'));
+        }
+
+        session()->forget('mentionData'); //remove mention data from the session
+
+        return view('frontend.user.mention.mention_this.error')
+            ->with(['error' => 'Done!']);
     }
 
     /**

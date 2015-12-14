@@ -13,10 +13,10 @@
 
         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
 
-            <form>
+            {!! Form::open(['route' => 'mention.this.do', 'method' => 'post', 'role' => 'form']) !!}
                 <div class="panel panel-default">
                     <div class="panel-heading" style="border-bottom: none;">
-                        <textarea class="form-control" rows="1" placeholder="Type anything.."></textarea>
+                        <textarea name="text" class="form-control" rows="1" placeholder="Type anything.."></textarea>
                     </div>
                     <div class="panel-body" onclick="window.open('{{ $data['url'] }}','_blank')" style="cursor: pointer;">
                         <img style="width: 15px; height: 15px;" src="{{ $data['favicon_url'] }}"/>
@@ -26,11 +26,11 @@
                 </div>
 
                 <div class="form-group">
-                    <select name="friends" class="friends-select form-control select2-multiple" style="width: 100%;" multiple> </select>
+                    <select multiple="multiple" name="friends[]" id="friends-select" class="friends-select form-control select2-multiple" style="width: 100%;"> </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Mention</button>
-            </form>
+            {!! Form::close() !!}
 
 
 
@@ -44,7 +44,7 @@
 
     <script src="{!!asset('js/select2.min.js')!!}"></script>
     <script>
-        $(".friends-select").select2({
+        $("#friends-select").select2({
             data: friendsArray,
             theme: "bootstrap",
             placeholder: "Select Friends..."

@@ -35,4 +35,4 @@
     @endif
 
 
-    <div class="panel-body {{'card-'.$mention->data['type']}}">
+    <div class="panel-body {{'card-'.$mention->type }}">

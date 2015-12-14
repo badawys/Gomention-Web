@@ -14,7 +14,9 @@
 		"rap2hpoutre/laravel-log-viewer": "^0.2.8",
         "php-curl-class/php-curl-class": "3.*",
         "laracasts/utilities": "~2.0",
-        "badawy/embedly": "1.*"
+        "badawy/embedly": "1.*",
+		"barryvdh/laravel-ide-helper": "^2.1",
+		"doctrine/dbal": "^2.5"
 
 	},
 	"require-dev": {
@@ -45,6 +47,7 @@
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled",
+            "php artisan ide-helper:generate",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [

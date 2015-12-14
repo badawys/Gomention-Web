@@ -166,7 +166,8 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
 	],
 
 	/*

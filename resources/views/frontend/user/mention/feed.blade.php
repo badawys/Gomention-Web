@@ -8,13 +8,13 @@
             @foreach($mentions as $mention)
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     @include('frontend.user.mention.cards.includes.header', ['mention' => $mention])
-                    @if($mention->data['type'] == 'text')
+                    @if($mention->type == 'text')
                         @include('frontend.user.mention.cards.text', ['mention' => $mention])
-                    @elseif($mention->data['type'] == 'link')
+                    @elseif($mention->type == 'link')
                         @include('frontend.user.mention.cards.link', ['mention' => $mention])
-                    @elseif($mention->data['type'] == 'photo')
+                    @elseif($mention->type == 'photo' )
                         @include('frontend.user.mention.cards.photo', ['mention' => $mention])
-                    @elseif($mention->data['type'] == 'video')
+                    @elseif($mention->type == 'video' )
                         @include('frontend.user.mention.cards.video', ['mention' => $mention])
                     @endif
                     @include('frontend.user.mention.cards.includes.footer', ['mention' => $mention])
