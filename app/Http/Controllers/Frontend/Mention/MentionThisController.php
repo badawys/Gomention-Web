@@ -10,8 +10,7 @@ use Illuminate\Http\Request;
 
 use Gomention\Http\Requests;
 use Gomention\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade;
 
 class MentionThisController extends Controller
@@ -40,6 +39,9 @@ class MentionThisController extends Controller
         //re-build the URL without http:// or https:// and www
         unset($urlParts['scheme']);
         $urlParts['host'] = $_url;
+
+        if(isset($urlParts['query']))
+            $urlParts['query'] = '?' . $urlParts['query'];
 
         $url = implode('', $urlParts);
 
@@ -98,103 +100,34 @@ class MentionThisController extends Controller
         }
 
         //Goto type page
-        $mentionTypes = $this->mentionTypes($cached);
+        $mentionTypes = $this->mentionTypes($cached->data);
+
         if (count($mentionTypes) == 1) {
-            if($mentionTypes[0] == 'link')
-                return redirect()->route('mention.this.link', [$cached->id]);
-            if($mentionTypes[0] == 'video')
-                return redirect()->route('mention.this.video', [$cached->id]);
-            if($mentionTypes[0] == 'photo')
-                return redirect()->route('mention.this.photo', [$cached->id]);
-            if($mentionTypes[0] == 'article')
-                return redirect()->route('mention.this.article', [$cached->id]);
+            return redirect()->route('mention.this.settings', [$mentionTypes[0], $cached->id]);
         }
 
         //view page with buttons of all available types with links to its controller
         return view('frontend.user.mention.mention_this.start')
-            ->with('types', $mentionTypes);
+            ->with('mentionTypes', $mentionTypes)
+            ->with('id', $cached->id);
     }
 
-    /**
-     * @param $cache_id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function link ($cache_id) {
-
-        //Get the cached version
-        $cached = MetaCache::find($cache_id);
-
-        //Get the final mention data
-        $data = $this->mentionArray($cached->toArray(),'link');
-
-        $data['cache_id'] = $cache_id;
-
-        //store data into the session (to use it in friends page)
-        session(['mentionData' => $data]);
-
-        //Goto friends page
-        return redirect()->route('mention.this.friends', ['link',$cached->id]);
-    }
-
-    /**
-     * @param $cache_id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function video ($cache_id) {
-
-        /**
-         * TODO:
-         *  1- Make thr final mention's data array
-         *  2- pass the array to friends page
-         */
-
-        return view('frontend.user.mention.mention_this.video');
-    }
-
-    /**
-     * @param $cache_id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function photo ($cache_id) {
-
-        /**
-         * TODO:
-         *  1- if there is only 1 photo goto step (3)
-         *  2- if there is more than 1 photo show photos to select one
-         *  1- Make thr final mention's data array
-         *  2- pass the array to friends page
-         */
-
-        return view('frontend.user.mention.mention_this.photo');
-    }
-
-    /**
-     * @param $cache_id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function article ($cache_id) {
-
-        /**
-         * TODO:
-         *  1- Make thr final mention's data array
-         *  2- pass the array to friends page
-         */
-
-        return view('frontend.user.mention.mention_this.article');
-    }
 
     /**
      * @param $cache_id
      * @param $type
      * @param FriendshipContract $friends
-     * @return $this
+     * @return mixed
      */
-    public function friends ($cache_id, $type, FriendshipContract $friends) {
+    public function settings ($type, $cache_id, FriendshipContract $friends) {
 
+        //Get the cached version
+        $cached = MetaCache::find($cache_id);
 
-        if (!session('mentionData'))
-            return view('frontend.user.mention.mention_this.error')
-                ->with(['error' => 'Error!']);
+        $data = $this->mentionArray($cached,$type);
+
+        $data['cache_id'] = $cache_id;
+
 
         $friendsArray = [];
 
@@ -202,15 +135,15 @@ class MentionThisController extends Controller
             $friendsArray[] = ['id' => $friend->id, 'text' => $friend->name];
         }
 
-        $friendsArray[] = ['id' => auth()->user()->id, 'text' => auth()->user()->name]; //add current user to array
+        $friendsArray[] = ['id' => auth()->user()->id, 'text' => "It's just you"]; //add current user to array
 
         JavaScriptFacade::put([
             'friendsArray' => $friendsArray
         ]);
 
-        return view('frontend.user.mention.mention_this.friends')
+        return view('frontend.user.mention.mention_this.settings')
             ->with('friends',$friends)
-            ->with('data', session('mentionData'));
+            ->with('data', $data);
     }
 
     /**
@@ -220,12 +153,12 @@ class MentionThisController extends Controller
      */
     public function mention (Request $request, MentionContract $mention) {
 
-
+        $mentionData = json_decode($request->input('mentionData'),1);
+        $mentionData['text'] = $request->input('text');
+        
         foreach($request->input('friends') as $friend_id) {
-            $mention->mention('link', $friend_id, (Array) session('mentionData'));
+            $mention->mention('link', $friend_id, $mentionData);
         }
-
-        session()->forget('mentionData'); //remove mention data from the session
 
         return view('frontend.user.mention.mention_this.error')
             ->with(['error' => 'Done!']);
@@ -236,17 +169,17 @@ class MentionThisController extends Controller
      * @param $type
      * @return array
      */
-    private function mentionArray(Array $data, $type){
+    private function mentionArray($data, $type){
 
         $mentionArray = [];
 
         if ($type == 'link') {
 
-            $mentionArray['provider_url'] = $data['data']['provider_url'];
-            $mentionArray['favicon_url'] = $data['data']['favicon_url'];
-            $mentionArray['title'] = $data['data']['title'];
-            $mentionArray['description'] = $data['data']['description'];
-            $mentionArray['url'] = $data['data']['url'];
+            $mentionArray['provider_url'] = $data->data['provider_url'];
+            $mentionArray['favicon_url'] = $data->data['favicon_url'];
+            $mentionArray['title'] = $data->data['title'];
+            $mentionArray['description'] = $data->data['description'];
+            $mentionArray['url'] = $data->data['url'];
 
         }
 
@@ -261,7 +194,15 @@ class MentionThisController extends Controller
 
         $mentionTypes = [];
 
-        $mentionTypes[] = 'link';
+        if($data['type'] == 'html')
+            $mentionTypes[] = 'link';
+
+        if (isset($data['media']) && isset($data['media']['type']) && $data['media']['type'] == 'video')
+            $mentionTypes[] = 'video';
+
+        if ($data['type'] == 'image')
+            $mentionTypes[] = 'photo';
+
 
         return $mentionTypes;
     }

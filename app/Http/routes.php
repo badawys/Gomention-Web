@@ -137,12 +137,7 @@ Route::group(['namespace' => 'Frontend'], function ()
 
             Route::get('', [ 'as' => 'mention.this', 'uses' => 'MentionThisController@start']);
 
-            Route::get('/photo/{id}', [ 'as' => 'mention.this.photo', 'uses' => 'MentionThisController@photo']);
-            Route::get('/video/{id}', [ 'as' => 'mention.this.video', 'uses' => 'MentionThisController@video']);
-            Route::get('/link/{id}', [ 'as' => 'mention.this.link', 'uses' => 'MentionThisController@link']);
-            Route::get('/article/{id}', [ 'as' => 'mention.this.article', 'uses' => 'MentionThisController@article']);
-
-            Route::get('/{type}/{id}/friends', [ 'where' => ['id' => '[0-9]+'], 'as' => 'mention.this.friends', 'uses' => 'MentionThisController@friends']);
+            Route::get('/settings/{type}/{id}', [ 'where' => ['id' => '[0-9]+'], 'as' => 'mention.this.settings', 'uses' => 'MentionThisController@settings']);
 
             Route::post('/mention', ['as' => 'mention.this.do', 'uses' => 'MentionThisController@mention']);
         });

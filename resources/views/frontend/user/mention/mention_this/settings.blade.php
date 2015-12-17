@@ -14,6 +14,9 @@
         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
 
             {!! Form::open(['route' => 'mention.this.do', 'method' => 'post', 'role' => 'form']) !!}
+
+            {!! Form::hidden('mentionData', json_encode($data)) !!}
+
                 <div class="panel panel-default">
                     <div class="panel-heading" style="border-bottom: none;">
                         <textarea name="text" class="form-control" rows="1" placeholder="Type anything.."></textarea>

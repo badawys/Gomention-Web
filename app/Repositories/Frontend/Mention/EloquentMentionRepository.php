@@ -42,7 +42,7 @@ class EloquentMentionRepository implements MentionContract {
         //TODO: Data and arguments check
 
         $mention = new Mention([
-            'type' => 'text',
+            'type' => $type,
             'by_user_id' => $this->user->id,
             'to_user_id' => $to_user_id,
             'data' => $data,

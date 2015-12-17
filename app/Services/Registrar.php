@@ -3,5 +3,5 @@
 namespace Gomention\Services;
 
 class Registrar {
-    
+
 }
