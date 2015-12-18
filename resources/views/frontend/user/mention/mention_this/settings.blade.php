@@ -16,15 +16,29 @@
             {!! Form::open(['route' => 'mention.this.do', 'method' => 'post', 'role' => 'form']) !!}
 
             {!! Form::hidden('mentionData', json_encode($data)) !!}
+            {!! Form::hidden('type', $type) !!}
 
                 <div class="panel panel-default">
                     <div class="panel-heading" style="border-bottom: none;">
                         <textarea name="text" class="form-control" rows="1" placeholder="Type anything.."></textarea>
                     </div>
-                    <div class="panel-body" onclick="window.open('{{ $data['url'] }}','_blank')" style="cursor: pointer;">
-                        <img style="width: 15px; height: 15px;" src="{{ $data['favicon_url'] }}"/>
-                        <a>{!! $data['title'] !!}</a>
-                        <p>{!! str_limit($data['description'], 200) !!}</p>
+                    <div class="panel-body" style="cursor: pointer;">
+
+                        @if($type == 'text')
+                            @include('frontend.user.mention.mention_this.cards.text', ['mention' => $data])
+
+                        @elseif($type == 'link')
+                            @include('frontend.user.mention.mention_this.cards.link', ['mention' => $data])
+
+                        @elseif($type == 'photo' )
+                            @include('frontend.user.mention.mention_this.cards.photo', ['mention' => $data])
+
+                        @elseif($type == 'video' )
+                            @include('frontend.user.mention.mention_this.cards.video', ['mention' => $data])
+
+                        @endif
+
+
                     </div>
                 </div>
 

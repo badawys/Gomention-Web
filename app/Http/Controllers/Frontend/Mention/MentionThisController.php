@@ -63,8 +63,7 @@ class MentionThisController extends Controller
 
                 $data = Embedly::extract($url,[
                     'maxwidth' => '554',
-                    'secure ' => 'true',
-                    'luxe ' => '1'
+                    'luxe' => '1'
                 ]);
 
                 if (!$data->error) {
@@ -84,8 +83,7 @@ class MentionThisController extends Controller
 
             $data = Embedly::extract($url,[
                 'maxwidth' => '554',
-                'secure ' => 'true',
-                'luxe ' => '1'
+                'luxe' => '1'
             ]);
 
             if (!$data->error) {
@@ -135,7 +133,7 @@ class MentionThisController extends Controller
             $friendsArray[] = ['id' => $friend->id, 'text' => $friend->name];
         }
 
-        $friendsArray[] = ['id' => auth()->user()->id, 'text' => "It's just you"]; //add current user to array
+        $friendsArray[] = ['id' => auth()->user()->id, 'text' => "Me"]; //add current user to array
 
         JavaScriptFacade::put([
             'friendsArray' => $friendsArray
@@ -143,7 +141,8 @@ class MentionThisController extends Controller
 
         return view('frontend.user.mention.mention_this.settings')
             ->with('friends',$friends)
-            ->with('data', $data);
+            ->with('data', $data)
+            ->with('type', $type);
     }
 
     /**
@@ -155,9 +154,10 @@ class MentionThisController extends Controller
 
         $mentionData = json_decode($request->input('mentionData'),1);
         $mentionData['text'] = $request->input('text');
-        
+        $mentionType = $request->input('type');
+
         foreach($request->input('friends') as $friend_id) {
-            $mention->mention('link', $friend_id, $mentionData);
+            $mention->mention($mentionType, $friend_id, $mentionData);
         }
 
         return view('frontend.user.mention.mention_this.error')
@@ -181,7 +181,18 @@ class MentionThisController extends Controller
             $mentionArray['description'] = $data->data['description'];
             $mentionArray['url'] = $data->data['url'];
 
-        }
+        } elseif ($type == 'video') {
+            $mentionArray['provider_url'] = $data->data['provider_url'];
+            $mentionArray['favicon_url'] = $data->data['favicon_url'];
+            $mentionArray['title'] = $data->data['title'];
+            $mentionArray['description'] = $data->data['description'];
+            $mentionArray['url'] = $data->data['url'];
+            $mentionArray['embed'] = $data->data['media']['html'];
+
+        } elseif ($type == 'photo') {
+            $mentionArray['provider_url'] = $data->data['provider_url'];
+            $mentionArray['url'] = $data->data['url'];
+            }
 
         return $mentionArray;
     }
