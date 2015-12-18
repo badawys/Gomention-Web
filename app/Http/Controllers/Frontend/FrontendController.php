@@ -19,7 +19,7 @@ class FrontendController extends Controller {
         if (Auth::user())
             return view('frontend.user.mention.feed')
                 ->withUser(auth()->user())
-                ->withMentions(Auth::user()->mentions()->get());
+                ->withMentions(Auth::user()->mentions()->paginate(10));
 
         return view('frontend.index');
 	}
