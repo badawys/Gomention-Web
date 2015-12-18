@@ -137,8 +137,17 @@ class EloquentUserRepository implements UserContract {
 	 */
 	public function updateProfile($id, $input) {
 		$user = $this->findOrThrowException($id);
+
 		$user->name = $input['name'];
         $user->bio = $input['bio'];
+
+        //Upload the profile picture
+        $ppFile = $input['profile_pic'];
+        $ppFile->move(storage_path() . '/imgs/profile', $id . "." . $ppFile->guessClientExtension());
+
+        //Update profile picture record
+        $user->picture = '/imgs/profile/' . $id . "." . $ppFile->guessClientExtension();
+
 
 		if ($user->canChangeEmail()) {
 			//Address is not current address

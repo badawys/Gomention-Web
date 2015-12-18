@@ -24,6 +24,7 @@ class UpdateProfileRequest extends Request {
 		return [
 			'name'	=> 'required',
 			'email'	=> 'sometimes|required|email',
+            'profile_pic' => 'image',
 		];
 	}
 }
