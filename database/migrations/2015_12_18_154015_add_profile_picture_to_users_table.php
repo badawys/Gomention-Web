@@ -14,7 +14,7 @@ class AddProfilePictureToUsersTable extends Migration
     {
         Schema::table('users', function(Blueprint $table)
         {
-            $table->string('picture')->after('bio')->default('/imgs/profile/0.jpg');
+            $table->string('picture')->after('bio')->default('/uploads/profile/0.jpg');
         });
     }
 
