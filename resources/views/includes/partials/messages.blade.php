@@ -50,4 +50,12 @@
             {!! Session::get('flash_message') !!}
         @endif
     </div>
+@elseif (Session::get('flash_danger_static'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        @if(is_array(json_decode(Session::get('flash_danger_static'),true)))
+            {!! implode('', Session::get('flash_danger_static')->all(':message<br/>')) !!}
+        @else
+            {!! Session::get('flash_danger_static') !!}
+        @endif
+    </div>
 @endif

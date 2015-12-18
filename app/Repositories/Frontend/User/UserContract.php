@@ -2,7 +2,7 @@
 
 /**
  * Interface UserContract
- * @package Gomention\Repositories\User
+ * @package App\Repositories\User
  */
 interface UserContract {
 

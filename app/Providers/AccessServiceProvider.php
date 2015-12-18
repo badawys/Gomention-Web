@@ -2,11 +2,11 @@
 
 use Gomention\Services\Access\Access;
 use Illuminate\Support\ServiceProvider;
-use Gomention\Blade\Access\AccessBladeExtender;
+use Gomention\Services\Blade\Access\AccessBladeExtender;
 
 /**
  * Class AccessServiceProvider
- * @package Gomention\Providers
+ * @package App\Providers
  */
 class AccessServiceProvider extends ServiceProvider
 {
@@ -65,6 +65,11 @@ class AccessServiceProvider extends ServiceProvider
 	 * Register service provider bindings
 	 */
 	public function registerBindings() {
+		$this->app->bind(
+			'Gomention\Repositories\Frontend\Auth\AuthenticationContract',
+			'Gomention\Repositories\Frontend\Auth\EloquentAuthenticationRepository'
+		);
+
 		$this->app->bind(
 			'Gomention\Repositories\Frontend\User\UserContract',
 			'Gomention\Repositories\Frontend\User\EloquentUserRepository'

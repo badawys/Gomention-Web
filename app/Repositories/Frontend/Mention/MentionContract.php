@@ -14,28 +14,11 @@ interface MentionContract {
     public function getMentions();
 
     /**
+     * @param $type
      * @param $to_user_id
      * @param array $data
      * @return mixed
      */
-    public function textMention($to_user_id, Array $data);
-
-    /**
-     * @param array $data
-     * @return mixed
-     */
-    public function linkMention(Array $data);
-
-    /**
-     * @param array $data
-     * @return mixed
-     */
-    public function videoMention(Array $data);
-
-    /**
-     * @param array $data
-     * @return mixed
-     */
-    public function photoMention(Array $data);
+    public function mention($type, $to_user_id, Array $data);
 
 }

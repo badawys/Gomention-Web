@@ -4,7 +4,7 @@ use Stripe, Stripe_Customer, Stripe_Charge, Stripe_Plan, Stripe_Coupon;
 
 /**
  * Class StripeGateway
- * @package Gomention\Services\Billing
+ * @package App\Services\Billing
  */
 class StripeGateway implements BillingContract {
 

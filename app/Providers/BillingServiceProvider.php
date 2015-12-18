@@ -4,7 +4,7 @@ use Illuminate\Support\ServiceProvider;
 
 /**
  * Class BillingServiceProvider
- * @package Gomention\Providers
+ * @package App\Providers
  */
 class BillingServiceProvider extends ServiceProvider {
 
@@ -22,8 +22,8 @@ class BillingServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app->bind(
-			'Gomention\Services\Billing\BillingContract',
-			'Gomention\Services\Billing\StripeGateway'
+			'App\Services\Billing\BillingContract',
+			'App\Services\Billing\StripeGateway'
 		);
 	}
 }

@@ -1,6 +1,6 @@
 <?php namespace Gomention\Http\Controllers\Backend\Access;
 
-use Gomention\Services\Registrar;
+use Gomention\Services\Access;
 use Gomention\Http\Controllers\Controller;
 use Gomention\Repositories\Backend\User\UserContract;
 use Gomention\Repositories\Backend\Role\RoleRepositoryContract;

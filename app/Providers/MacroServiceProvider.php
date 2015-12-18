@@ -4,7 +4,7 @@ use Gomention\Services\Macros;
 
 /**
  * Class MacroServiceProvider
- * @package Gomention\Providers
+ * @package App\Providers
  */
 class MacroServiceProvider extends \Illuminate\Html\HtmlServiceProvider {
 

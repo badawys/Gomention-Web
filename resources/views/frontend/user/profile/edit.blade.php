@@ -10,7 +10,7 @@
 
 				<div class="panel-body">
 
-                       {!! Form::model($user, ['route' => ['profile.update', $user->id], 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
+                       {!! Form::model($user, ['route' => ['profile.update', $user->id], 'class' => 'form-horizontal', 'method' => 'PATCH', 'files' => true]) !!}
 
                               <div class="form-group">
                                     <label class="col-md-4 control-label">Name</label>
@@ -32,6 +32,13 @@
                                 <label class="col-md-4 control-label">Bio</label>
                                 <div class="col-md-6">
                                     {!! Form::textarea('bio', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Profile Picture</label>
+                                <div class="col-md-6">
+                                    {!! Form::file('profile_pic') !!}
                                 </div>
                             </div>
 

@@ -185,6 +185,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $this->friendOf()->detach($user->id);
     }
 
+    /**
+     * @param User $user
+     */
     public function acceptFriend(User $user)
     {
         $this->declineFriend($user);
@@ -192,6 +195,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $this->friendOf()->attach($user->id, ['accepted' => '1']);
     }
 
+    /**
+     * @param User $user
+     */
     public function declineFriend(User $user) {
 
         $this->friendsOfMineAndNotAccepted()->detach($user->id);
@@ -199,11 +205,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     }
 
+    /**
+     * @return mixed
+     */
     public function mentions () {
 
         return $this->hasMany('Gomention\Mention', 'by_user_id')
             ->orWhere('to_user_id', $this->id)
-            ->orderBy('created_at', 'desc');
+            ->orderBy('id', 'desc')
+            ->with('by_user','to_user');
     }
 
 }

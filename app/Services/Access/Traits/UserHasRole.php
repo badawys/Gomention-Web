@@ -2,7 +2,7 @@
 
 /**
  * Class UserHasRole
- * @package Gomention\Services\Access\Traits
+ * @package App\Services\Access\Traits
  */
 trait UserHasRole {
 

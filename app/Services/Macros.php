@@ -4,7 +4,7 @@ use Illuminate\Html\FormBuilder;
 
 /**
  * Class Macros
- * @package Gomention\Http
+ * @package App\Http
  */
 class Macros extends FormBuilder {
 

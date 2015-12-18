@@ -11,7 +11,7 @@
 
                 <ul class="nav navbar-nav navbar-left hidden-xs">
                     <li data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="false"><a href="#" ><i class="fa fa-bars"></i></a></li>
-                    <li><a href="#"><i class="fa fa-home"></i>  Home</a></li>
+                    <li><a href="{!!url('/')!!}"><i class="fa fa-home"></i>  Home</a></li>
                 </ul>
 
 				<div class="navbar-brand" style="width: 100%; margin-top: -50px;" >
@@ -29,7 +29,7 @@
 						<li>{!! link_to('auth/register', 'Register') !!}</li>
 					@else
                         <li class="hidden-xs"><a href="#" data-toggle="modal" data-target="#myModal">Filter   <i class="fa fa-filter"></i></a></li>
-                        <li class="hidden-xs"><a href="#">Compose   <i class="fa fa-plus-circle"></i></a></li>
+                        <li class="hidden-xs"><a href="#"> <i class="fa fa-plus-circle"></i></a></li>
                         <li class=""><a href="#"><i class="fa fa-bell"></i></a></li>
                         <li class="hidden-xs"><a href="#"><i class="fa fa-cog"></i></a></li>
 					@endif
