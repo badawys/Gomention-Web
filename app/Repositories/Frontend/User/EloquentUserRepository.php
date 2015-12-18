@@ -143,10 +143,10 @@ class EloquentUserRepository implements UserContract {
 
         //Upload the profile picture
         $ppFile = $input['profile_pic'];
-        $ppFile->move(storage_path() . '/imgs/profile', $id . "." . $ppFile->guessClientExtension());
+        $ppFile->move(public_path() . '/uploads/profile', $id . "." . $ppFile->guessClientExtension());
 
         //Update profile picture record
-        $user->picture = '/imgs/profile/' . $id . "." . $ppFile->guessClientExtension();
+        $user->picture = '/uploads/profile/' . $id . "." . $ppFile->guessClientExtension();
 
 
 		if ($user->canChangeEmail()) {

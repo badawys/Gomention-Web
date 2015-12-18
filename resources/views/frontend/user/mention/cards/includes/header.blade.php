@@ -4,7 +4,7 @@
         <div class="row" style="margin: 0px; line-height: 60px;">
             <div class="dropdown">
                 <span>
-                    <img class="img-circle" src="{{storage_path() . $mention->by_user->picture}}" style="width: 60px; height: 60px; margin-right: 10px;">
+                    <img class="img-circle" src="{{url($mention->by_user->picture)}}" style="width: 60px; height: 60px; margin-right: 10px;">
                 </span>
 
                 <span>
