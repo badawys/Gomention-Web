@@ -28,8 +28,8 @@
 						<li>{!! link_to('auth/login', 'Login') !!}</li>
 						<li>{!! link_to('auth/register', 'Register') !!}</li>
 					@else
-                        <li class="hidden-xs"><a href="#" data-toggle="modal" data-target="#myModal">Filter   <i class="fa fa-filter"></i></a></li>
-                        <li class="hidden-xs"><a href="#"> <i class="fa fa-plus-circle"></i></a></li>
+                        <li class="hidden-xs"><a href="#" ><i class="fa fa-filter"></i></a></li>
+                        <li class="hidden-xs"><a href="#" data-toggle="modal" data-target="#myModal"> <i class="fa fa-plus-circle"></i></a></li>
                         <li class=""><a href="#"><i class="fa fa-bell"></i></a></li>
                         <li class="hidden-xs"><a href="#"><i class="fa fa-cog"></i></a></li>
 					@endif
@@ -65,14 +65,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel">Mention This Button</h4>
                 </div>
                 <div class="modal-body">
-                    Test
+                    <p>
+                        To mention your friends, you need to drag "Mention This" button to your browser's bookmarks bar. Jsut that easy, drag it and Gomention ;)
+                    </p>
+                    <a type="button" class="btn btn-primary btn-block" href="javascript: ((function() {    if (window.location.protocol != 'http:' && window.location.protocol != 'https:') {        alert('This page cannot be mentioned.');        return;    }    var url = 'http://alpha-tests.gomention.com/mention-this?url=' + encodeURIComponent(window.location.href);    window.open(url,'Mention This','width=420, height=470');})())">Mention This</a>
+                    <p style="font-size: 10px; margin-top: 10px;">
+                        To show your bookmarks bar: click (Ctrl+Shift+B) in most browsers.
+                    </p>
+                    <p style="font-size: 10px;">
+                        Tested in: (Chrome 47+) (Firefox 42+)
+                    </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

@@ -50,6 +50,10 @@
     <script src="{!!asset('js/jquery.jscroll.min.js')!!}"></script>
 
     <script>
+
+        //Hide pagination
+        $('ul.pagination:visible:first').hide();
+
         $(window).on('load', function(){
 
             $('#container').masonry({
@@ -67,7 +71,7 @@
 
             },function(arrayOfNewElems){
 
-                $('#container').masonry( 'appended', arrayOfNewElems )
+                $('#container').append(arrayOfNewElems).masonry('appended',arrayOfNewElems )
 
             });
 
