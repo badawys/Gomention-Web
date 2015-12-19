@@ -71,8 +71,10 @@
 
             },function(arrayOfNewElems){
 
-                $('#container').append(arrayOfNewElems).masonry('appended',arrayOfNewElems )
-
+                $('#container')
+                        .append(arrayOfNewElems)
+                        .masonry('appended',arrayOfNewElems)
+                        .masonry();
             });
 
         });
