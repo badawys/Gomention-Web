@@ -47,6 +47,7 @@
 @section('after-scripts-end')
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.js"></script>
+    <script src="{!!asset('js/imagesloaded.pkgd.min.js')!!}"></script>
     <script src="{!!asset('js/jquery.jscroll.min.js')!!}"></script>
 
     <script>
@@ -54,7 +55,7 @@
         //Hide pagination
         $('ul.pagination:visible:first').hide();
 
-        $(window).on('load', function(){
+        $('#container').imagesLoaded( function(){
 
             $('#container').masonry({
                 // options
@@ -71,10 +72,12 @@
 
             },function(arrayOfNewElems){
 
-                $('#container')
-                        .append(arrayOfNewElems)
-                        .masonry('appended',arrayOfNewElems)
-                        .masonry();
+                $('#container').imagesLoaded(
+                    $('#container')
+                            .append(arrayOfNewElems)
+                            .masonry('appended',arrayOfNewElems)
+                            .masonry()
+                );
             });
 
         });
