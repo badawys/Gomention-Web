@@ -1,5 +1,9 @@
 @extends('frontend.layouts.master')
 
+@section('after-styles-end')
+    <link href="{!!asset('css/cards.css')!!}" rel='stylesheet' type='text/css'>
+@endsection
+
 @section('content')
     <div class="row">
 
@@ -11,7 +15,7 @@
                             @include('frontend.user.mention.cards.includes.header', ['mention' => $mention])
 
                             @if(isset($mention->data['text']) && $mention->data['text'] != '')
-                                <div class="mentionText">
+                                <div class="mentionText text-{{$mention->type}}">
                                     <p>{{($mention->data['text'])}}</p>
                                 </div>
                             @endif
