@@ -99,11 +99,11 @@ class EloquentUserRepository implements UserContract {
 		return false;
 	}
 
-	/**
-	 * @param $provider
-	 * @param $providerData
-	 * @param $user
-	 */
+    /**
+     * @param $provider
+     * @param $providerData
+     * @param $user
+     */
 	public function checkIfUserNeedsUpdating($provider, $providerData, $user) {
 		//Have to first check to see if name and email have to be updated
 		$userData = [
@@ -141,12 +141,14 @@ class EloquentUserRepository implements UserContract {
 		$user->name = $input['name'];
         $user->bio = $input['bio'];
 
-        //Upload the profile picture
-        $ppFile = $input['profile_pic'];
-        $ppFile->move(public_path() . '/uploads/profile', $id . "." . $ppFile->guessClientExtension());
+        if (isset($input['profile_pic'])) {
+            //Upload the profile picture
+            $ppFile = $input['profile_pic'];
+            $ppFile->move(public_path() . '/uploads/profile', $id . "." . $ppFile->guessClientExtension());
 
-        //Update profile picture record
-        $user->picture = '/uploads/profile/' . $id . "." . $ppFile->guessClientExtension();
+            //Update profile picture record
+            $user->picture = '/uploads/profile/' . $id . "." . $ppFile->guessClientExtension();
+        }
 
 
 		if ($user->canChangeEmail()) {
