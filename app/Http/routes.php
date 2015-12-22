@@ -75,7 +75,9 @@ Route::group(['namespace' => 'Frontend'], function ()
     Route::group(['middleware' => 'auth'], function ()
     {
         Route::get('dashboard', ['as' => 'frontend.dashboard', 'uses' => 'DashboardController@index']);
-        Route::resource('profile', 'ProfileController', ['only' => ['edit', 'update', 'show']]);
+
+        Route::get('profile/{id}', ['as' => 'profile.show', 'uses' => 'ProfileController@show']);
+        Route::resource('profile', 'ProfileController', ['only' => ['edit', 'update']]);
     });
 
     /**
