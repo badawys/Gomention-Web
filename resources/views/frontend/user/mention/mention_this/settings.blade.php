@@ -46,7 +46,7 @@
                     <select multiple="multiple" name="friends[]" id="friends-select" class="friends-select form-control select2-multiple" style="width: 100%;"> </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Mention</button>
+                <button type="submit" id="submit" class="btn btn-primary" disabled="disabled">Mention This</button>
             {!! Form::close() !!}
 
 
@@ -61,11 +61,30 @@
 
     <script src="{!!asset('js/select2.min.js')!!}"></script>
     <script>
-        $("#friends-select").select2({
+
+        var friends_select = $(".friends-select");
+
+        friends_select.select2({
             data: friendsArray,
             theme: "bootstrap",
             placeholder: "Select Friends..."
         });
+
+        friends_select.on("change", function() {
+
+            var empty = true;
+
+            if($('.select2-selection__choice').length){
+                empty = false;
+            }
+
+            if (empty) {
+                $('#submit').attr('disabled', 'disabled');
+            } else {
+                $('#submit').removeAttr('disabled');
+            }
+        });
+
     </script>
 
 @endsection
