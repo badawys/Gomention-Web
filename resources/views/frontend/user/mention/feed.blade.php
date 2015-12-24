@@ -80,7 +80,7 @@
                     $('#container')
                             .append(arrayOfNewElems)
                             .masonry('appended',arrayOfNewElems)
-                            .masonry()
+                            .masonry('reloadItems')
                 );
             });
 
