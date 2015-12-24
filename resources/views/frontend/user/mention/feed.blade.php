@@ -59,31 +59,32 @@
         //Hide pagination
         $('ul.pagination:visible:first').hide();
 
-        $('#container').imagesLoaded( function(){
+        $('#container').imagesLoaded().progress( function(){
 
             $('#container').masonry({
                 // options
                 columnWidth: '.item',
                 itemSelector: '.item',
-                isAnimated: true
-            });
+                transitionDuration: 0
+            })
+        });
 
-            $('.mentions-list').infinitescroll({
-                navSelector  : ".pagination",
-                nextSelector : ".pagination li.active + li > a",
-                itemSelector : ".item",
-                debug        : false
+        $('.mentions-list').infinitescroll({
+            navSelector  : ".pagination",
+            nextSelector : ".pagination li.active + li > a",
+            itemSelector : ".item",
+            debug        : false
 
-            },function(arrayOfNewElems){
+        },function(arrayOfNewElems){
 
-                $('#container').imagesLoaded(
+            $('#container').imagesLoaded().progress(
                     $('#container')
                             .append(arrayOfNewElems)
                             .masonry('appended',arrayOfNewElems)
-                            .masonry('reloadItems')
-                );
-            });
-
+                            .masonry()
+            );
         });
+
+
     </script>
 @endsection
