@@ -1,8 +1,10 @@
 {
-    "name": "Gomention",
-    "private": true,
-    "devDependencies": {
-        "gulp": "^3.8.8",
-        "laravel-elixir": "^1.0.0"
-    }
+  "name": "Gomention",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-apidoc": "^0.2.2",
+    "laravel-elixir": "^1.0.0",
+    "laravel-elixir-apidoc": "^0.1.0"
+  }
 }
