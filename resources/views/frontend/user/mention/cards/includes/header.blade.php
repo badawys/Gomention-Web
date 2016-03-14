@@ -29,7 +29,7 @@
                     <li><a href="#"> <i class="fa fa-external-link"></i> Go to URL</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#"> <i class="fa fa-eye-slash"></i> Hide</a></li>
-                    <li><a href="#"> <i class="fa fa-trash-o"></i> Delete</a></li>
+                    <li><a class="delete-mention" style="cursor: pointer;"> <i class="fa fa-trash-o"></i> Delete</a></li>
                 </ul>
             </div>
         </div>

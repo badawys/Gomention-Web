@@ -150,11 +150,11 @@ class MentionThisController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param Requests\Frontend\User\MentionThisRequest $request
      * @param MentionContract $mention
      * @return $this
      */
-    public function mention (Request $request, MentionContract $mention) {
+    public function mention (Requests\Frontend\User\MentionThisRequest $request, MentionContract $mention) {
 
         $mentionData = json_decode($request->input('mentionData'),1);
         $mentionData['text'] = $request->input('text');

@@ -2,9 +2,8 @@
 
 namespace Gomention\Http\Controllers\Frontend\Mention;
 
-use Illuminate\Http\Request;
+use Gomention\Mention;
 
-use Gomention\Http\Requests;
 use Gomention\Http\Controllers\Controller;
 
 class MentionController extends Controller
@@ -19,9 +18,14 @@ class MentionController extends Controller
 
     /**
      * @param $id
+     * @return mixed
      */
     public function delete ($id) {
-        //TODO
+        if (\Request::ajax()){
+            Mention::destroy($id);
+            return json_decode('success');
+        }
+        return json_decode('error');
     }
 
     /**

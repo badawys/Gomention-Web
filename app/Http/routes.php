@@ -1,64 +1,6 @@
 <?php
 
 /**
- * Test Routes
- */
-
-Route::get('/mention', function (\Gomention\Repositories\Frontend\Mention\MentionContract $mention){
-
-
-    $mention->textMention(
-        '3', //Target User id
-        [
-            'type' => 'video',
-            'src' => "https://www.youtube.com/embed/Ue4PCI0NamI" //Mention Data
-        ]);
-
-
-    dd(Auth::user()->mentions()->get()->toArray());
-
-});
-
-
-Route::get('/hello', function (){
-
-    $q = Embedly::extract(['www.aljazeera.net/news/cultureandart/2015/7/13/%D8%AA%D8%B9%D9%84%D9%85-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%8A%D9%86%D8%AA%D8%B4%D8%B1-%D9%81%D9%8A-%D8%A8%D8%B1%D9%8A%D8%B7%D8%A7%D9%86%D9%8A%D8%A7'],[
-
-        'maxwidth' => '554'
-
-    ]);
-
-    return dd($q);
-//    if ($q->error)
-//        return $q->error_code;
-//
-//    return $q->content;
-});
-
-Route::get('/mentions', function () {
-
-    dd(Auth::user()->mentions()->get()->toArray());
-
-});
-
-
-/*****************************************************
- * ***************************************************
- * ***************************************************
- * ***************************************************
- * ***************************************************
- * ***************************************************
- * *******************TEST END************************
- * ***************************************************
- * ***************************************************
- * ***************************************************
- * ***************************************************
- * ***************************************************
- ****************************************************/
-
-
-
-/**
  * Frontend Routes
  * Namespaces indicate Controllers folder structure
  */
@@ -75,7 +17,9 @@ Route::group(['namespace' => 'Frontend'], function ()
     Route::group(['middleware' => 'auth'], function ()
     {
         Route::get('dashboard', ['as' => 'frontend.dashboard', 'uses' => 'DashboardController@index']);
-        Route::resource('profile', 'ProfileController', ['only' => ['edit', 'update', 'show']]);
+
+        Route::get('profile/{id}', ['as' => 'profile.show', 'uses' => 'ProfileController@show']);
+        Route::resource('profile', 'ProfileController', ['only' => ['edit', 'update']]);
     });
 
     /**
