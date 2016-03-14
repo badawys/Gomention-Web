@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 use Gomention\Http\Requests;
 use Gomention\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;;
+use Illuminate\Support\Facades\Auth;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade;
 
 class MentionThisController extends Controller
@@ -22,6 +22,10 @@ class MentionThisController extends Controller
     public function start (Request $request) {
 
         $url = $request->input('url');
+
+        if (!$url)
+            return view('frontend.user.mention.mention_this.error')
+                ->with(['error' => 'No URL']);
 
         // in case scheme relative URI is passed, e.g., //www.google.com/
         $_url = trim($url, '/');
