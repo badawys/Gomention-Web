@@ -1,0 +1,12 @@
+{
+  "name": "Gomention APIs",
+  "description": "Gomention private APIs",
+  "title": "Gomention APIs",
+  "url" : "https://alpha-tests.gomention.com/api/v1",
+  "order": [
+  ],
+  "template": {
+    "withCompare": false,
+    "withGenerator": false
+  }
+}
