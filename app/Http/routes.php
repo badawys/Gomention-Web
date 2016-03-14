@@ -147,8 +147,6 @@ Route::group(['namespace' => 'Frontend'], function ()
 
 
 
-
-
 /**
  * Backend Routes
  * Namespaces indicate folder structure
@@ -174,4 +172,14 @@ Route::group(['namespace' => 'Backend'], function ()
         Route::get('logs', ['as' => 'Logs', 'uses' => '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index']);
 
 	});
+});
+
+
+/**
+ * APIs Routes
+ * Namespaces indicate folder structure
+ */
+Route::group(['namespace' => 'api'], function ()
+{
+    require_once(__DIR__ . "/Routes/API/Routes.php");
 });
