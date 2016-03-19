@@ -1,40 +1,88 @@
-    <nav class="navbar navbar-inverse navbar-fixed-top custom-navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 
 			<div class="navbar-header" style="left:0; width: 100%; position: absolute;">
 
-                <button style="margin-left: 10px;" type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="false">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                {{--<button style="margin-left: 10px;" type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="false">--}}
+                    {{--<span class="icon-bar"></span>--}}
+                    {{--<span class="icon-bar"></span>--}}
+                    {{--<span class="icon-bar"></span>--}}
+                {{--</button>--}}
 
-                <ul class="nav navbar-nav navbar-left hidden-xs">
-                    <li data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="false"><a href="#" ><i class="fa fa-bars"></i></a></li>
-                    <li><a href="{!!url('/')!!}"><i class="fa fa-home"></i>  Home</a></li>
-                </ul>
+                {{--<ul class="nav navbar-nav navbar-left hidden-xs">--}}
+                    {{--<li data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="false"><a href="#" ><i class="fa fa-bars"></i></a></li>--}}
+                    {{--<li><a href="{!!url('/')!!}"><i class="fa fa-home"></i>  Home</a></li>--}}
+                    {{----}}
+                {{--</ul>--}}
 
-				<div class="navbar-brand" style="width: 100%; margin-top: -50px;" >
+				<div class="navbar-brand" style="margin-left: 40px;padding-top: 12px;padding-bottom: 12px;" >
                     <a style="width: 20px;" href="{!!url('/')!!}">
-                        <img style=" padding-left: 10px; display: block; margin: 0 auto; height: 25px;" alt="Brand" src="{!!asset('img/frontend/logo.jpg')!!}">
+                        <img style=" padding-left: 0px; display: block; margin: 0 auto; height: 29px;" alt="Brand" src="{!!asset('img/frontend/logo.jpg')!!}">
                     </a>
                 </div>
+
+                @if (Auth::user())
+                    <div style="display: block; margin-right: 255px;">
+                        <form class="navbar-form" role="search" style="display: block; text-align: center;">
+                            <div class="input-group">
+                                <span class="input-group-addon filter-icon"><i class="fa fa-filter"></i></span>
+                                <input type="text" class="form-control filter-box" placeholder="Filter mentions or things...">
+                            </div>
+                            <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                        </form>
+                    </div>
+                @endif
+
 			</div>
 
-			<div class="" >
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::guest())
+                    <li>{!! link_to('auth/login', 'Login') !!}</li>
+                    <li>{!! link_to('auth/register', 'Register') !!}</li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="padding-top: 10px;padding-bottom: 10px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span>
+                                    <img class="img-circle" src="{{url(Auth::user()->picture)}}" style="width: 30px; height: 30px; margin-right: 5px;">
+                                </span>
+                            {{Auth::user()->name}}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>{!! link_to('dashboard', 'Dashboard') !!}</li>
+                            <li>{!! link_to_route('profile.show', 'Show Profile' , Auth::user()->id) !!}</li>
+                            <li>{!! link_to('auth/password/change', 'Change Password') !!}</li>
+                            @permission('view_admin_link')
+                            <li role="presentation" class="divider"></li>
+                            <li>{!! link_to_route('backend.dashboard', 'Administration') !!}</li>
+                            <li>{!! link_to_route('Logs', 'Logs') !!}</li>
+                            @endpermission
+                            <li role="presentation" class="divider"></li>
+                            <li>{!! link_to('auth/logout', 'Logout') !!}</li>
+                        </ul>
+                    </li>
+                @endif
 
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li>{!! link_to('auth/login', 'Login') !!}</li>
-						<li>{!! link_to('auth/register', 'Register') !!}</li>
-					@else
-                        <li class="hidden-xs"><a href="#" ><i class="fa fa-filter"></i></a></li>
-                        <li class="hidden-xs"><a href="#" data-toggle="modal" data-target="#myModal"> <i class="fa fa-plus-circle"></i></a></li>
-                        <li class=""><a href="#"><i class="fa fa-bell"></i></a></li>
-                        <li class="hidden-xs"><a href="#"><i class="fa fa-cog"></i></a></li>
-					@endif
-				</ul>
-			</div>
+            </ul>
+
+
+
+
+
+			{{--<div class="" >--}}
+
+				{{--<ul class="nav navbar-nav navbar-right">--}}
+					{{--@if (Auth::guest())--}}
+						{{--<li>{!! link_to('auth/login', 'Login') !!}</li>--}}
+						{{--<li>{!! link_to('auth/register', 'Register') !!}</li>--}}
+					{{--@else--}}
+                        {{--<li class="hidden-xs"><a href="#" ><i class="fa fa-filter"></i></a></li>--}}
+                        {{--<li class="hidden-xs"><a href="#" data-toggle="modal" data-target="#myModal"> <i class="fa fa-plus-circle"></i></a></li>--}}
+                        {{--<li class=""><a href="#"><i class="fa fa-bell"></i></a></li>--}}
+                        {{--<li><a href="{!! url('/dashboard') !!}"><i class="fa fa-cog"></i></a></li>--}}
+					{{--@endif--}}
+				{{--</ul>--}}
+			{{--</div>--}}
 		</div>
 	</nav>
 
@@ -103,12 +151,12 @@
         </div>
     </div>
 
-    <script>
-        $('#myNavmenu').on("show.bs.offcanvas", function() {
-            var overlay = $('<div id="overlay"> </div>');
-            overlay.appendTo(document.body);
-        });
-        $('#myNavmenu').on("hide.bs.offcanvas", function() {
-            $("#overlay").remove();
-        });
-    </script>
+    {{--<script>--}}
+        {{--$('#myNavmenu').on("show.bs.offcanvas", function() {--}}
+            {{--var overlay = $('<div id="overlay"> </div>');--}}
+            {{--overlay.appendTo(document.body);--}}
+        {{--});--}}
+        {{--$('#myNavmenu').on("hide.bs.offcanvas", function() {--}}
+            {{--$("#overlay").remove();--}}
+        {{--});--}}
+    {{--</script>--}}

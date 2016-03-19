@@ -20,6 +20,9 @@
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 
+
+        <script src='http://github.hubspot.com/pace/pace.js'></script>
+
         <!-- Fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -29,6 +32,8 @@
         <link rel="icon" href="favicon.png">
 
         {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
+
+        @yield('after-header-js-end')
     </head>
     <body style="padding-top: 75px;">
         <!--[if lt IE 8]>
@@ -37,7 +42,9 @@
 
         @include('frontend.includes.nav')
 
-        <div class="container">
+        @yield('left-bar')
+
+        <div class="container-fluid">
             @include('includes.partials.messages')
             @yield('content')
         </div><!-- container -->
