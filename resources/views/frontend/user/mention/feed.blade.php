@@ -12,7 +12,7 @@
 
             @foreach($friends as $friend)
 
-                <a href="{{url('/'.$friend->id)}}" class="list-group-item {{ set_active($friend->id) }}">
+                <a href="{{url('mentions/'.$friend->id)}}" class="list-group-item {{ set_active('mentions/'.$friend->id) }}">
                     <div class="sidebar-item">
                         <div class="sidebar-item-pic">
                             <span>
@@ -56,13 +56,13 @@
                         <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             All Mentions <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li><a href="#">Action</a></li>--}}
+                            {{--<li><a href="#">Another action</a></li>--}}
+                            {{--<li><a href="#">Something else here</a></li>--}}
+                            {{--<li role="separator" class="divider"></li>--}}
+                            {{--<li><a href="#">Separated link</a></li>--}}
+                        {{--</ul>--}}
                     </div>
                 </div>
             </div>
@@ -159,11 +159,13 @@
         //Hide pagination
         $('ul.pagination:visible:first').hide();
 
-        $('#container').imagesLoaded().progress( function(){
+        var $container = $('#container');
 
-            $('#container').show();
+        $container.imagesLoaded().progress( function(){
 
-            $('#container').masonry({
+            $container.show();
+
+            $container.masonry({
                 // options
                 columnWidth: '.item',
                 itemSelector: '.item',
@@ -179,12 +181,14 @@
 
         },function(arrayOfNewElems){
 
-            $('#container').imagesLoaded().progress(
-                    $('#container')
-                            .append(arrayOfNewElems)
-                            .masonry('appended',arrayOfNewElems)
-                            .masonry()
-            );
+            // hide new items while they are loading
+            var $newElems = $( arrayOfNewElems ).css({ opacity: 0 });
+            // ensure that images load before adding to masonry layout
+            $newElems.imagesLoaded(function(){
+                // show elems now they're ready
+                $newElems.animate({ opacity: 1 });
+                $container.masonry( 'appended', $newElems, true );
+            });
         });
 
         var delId = null;
