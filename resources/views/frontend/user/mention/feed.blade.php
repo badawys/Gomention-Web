@@ -6,9 +6,21 @@
 
 @section('left-bar')
 
-    <div style="background-color: white; width: 500px; height: 100%; position: fixed;width: 270px;box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);margin-top: -37px;">
+    <div style="background-color: #FFFFFF; width: 500px; height: 100%; position: fixed;width: 270px;box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);margin-top: -26px;">
 
-        <div class="list-group" style="margin-top: 70px; border-radius: 0px;">
+        <div class="friends-search" style="padding: 10px; padding-top: 20px; padding-bottom: 20px;">
+
+            <form class="search-form" role="search" style="display: block; text-align: center;">
+                <div class="input-group">
+                    <span class="input-group-addon search-icon"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control search-box" placeholder="Find Friends...">
+                </div>
+                <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+            </form>
+
+        </div>
+
+        <div class="list-group" style="margin-top: 20px; border-radius: 0px;">
 
             @foreach($friends as $friend)
 
