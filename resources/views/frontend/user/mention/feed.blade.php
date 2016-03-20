@@ -84,51 +84,72 @@
         <div class="row" style="margin-left: 250px;">
             <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                 <div class="row">
-                    <div id="container" style="display: none;">
-                        <ul class="mentions-list">
-                            @foreach($mentions as $mention)
-                                <li id="{{$mention->id}}" class="item col-md-4 col-sm-6 col-xs-12" style="list-style: none;   ">
-                                    {{--@include('frontend.user.mention.cards.includes.header', ['mention' => $mention])--}}
+                    @if(!$mentions->isEmpty())
+                        <div id="container" style="display: none;">
+                            <ul class="mentions-list">
+                                @foreach($mentions as $mention)
+                                    <li id="{{$mention->id}}" class="item col-md-4 col-sm-6 col-xs-12" style="list-style: none;   ">
+                                        {{--@include('frontend.user.mention.cards.includes.header', ['mention' => $mention])--}}
 
-                                    <div class="panel panel-default">
+                                        <div class="panel panel-default">
 
-                                        <div class="panel-body {{'card-body-'.$mention->type }}">
-                                            <div class="{{'card-'.$mention->type }}">
+                                            <div class="panel-body {{'card-body-'.$mention->type }}">
+                                                <div class="{{'card-'.$mention->type }}">
 
-                                                @if($mention->type == 'text')
-                                                    @include('frontend.user.mention.cards.text', ['mention' => $mention])
+                                                    @if($mention->type == 'text')
+                                                        @include('frontend.user.mention.cards.text', ['mention' => $mention])
 
-                                                @elseif($mention->type == 'link')
-                                                    @include('frontend.user.mention.cards.link', ['mention' => $mention])
+                                                    @elseif($mention->type == 'link')
+                                                        @include('frontend.user.mention.cards.link', ['mention' => $mention])
 
-                                                @elseif($mention->type == 'photo' )
-                                                    @include('frontend.user.mention.cards.photo', ['mention' => $mention])
+                                                    @elseif($mention->type == 'photo' )
+                                                        @include('frontend.user.mention.cards.photo', ['mention' => $mention])
 
-                                                @elseif($mention->type == 'video' )
-                                                    @include('frontend.user.mention.cards.video', ['mention' => $mention])
+                                                    @elseif($mention->type == 'video' )
+                                                        @include('frontend.user.mention.cards.video', ['mention' => $mention])
 
+                                                    @endif
+                                                </div>
+
+                                                @if(isset($mention->data['text']) && $mention->data['text'] != '')
+                                                    <div class="mentionText text-{{$mention->type}}">
+                                                        <p dir="auto" style="text-align: justify;">{{($mention->data['text'])}}</p>
+                                                    </div>
                                                 @endif
+
                                             </div>
 
-                                            @if(isset($mention->data['text']) && $mention->data['text'] != '')
-                                                <div class="mentionText text-{{$mention->type}}">
-                                                    <p dir="auto" style="text-align: justify;">{{($mention->data['text'])}}</p>
-                                                </div>
-                                            @endif
+                                            <div class="panel-footer" style="background-color: #ffffff; padding: 0; border: none;">
 
+                                                @include('frontend.user.mention.cards.includes.footer', ['mention' => $mention])
+
+                                            </div>
                                         </div>
+                                    </li>
+                                @endforeach
+                            </ul>
 
-                                        <div class="panel-footer" style="background-color: #ffffff; padding: 0; border: none;">
+                        </div>
 
-                                            @include('frontend.user.mention.cards.includes.footer', ['mention' => $mention])
+                    @else
 
-                                        </div>
+                        <div class="row" >
+
+                            <div class="col-md-12">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        No mentions to display!
                                     </div>
-                                </li>
-                            @endforeach
-                        </ul>
 
-                    </div>
+                                    <div class="panel-body">
+                                        Start mentioning {{$selected->name}} to see something here !
+                                    </div>
+                                </div><!-- panel -->
+
+                            </div><!-- col-md-10 -->
+
+                    @endif
 
                 </div>
 
@@ -155,6 +176,20 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
+    @else
+
+        <div class="row" style="margin-left: 250px; padding: 20px; padding-left: 100px; padding-right: 100px; z-index: 1; padding-top: 0px; margin-top: -26px;">
+
+            <div class="col-md-10 col-md-offset-1">
+
+                <div class="panel panel-default">
+                     <div class="panel-body">
+                            Select friend from left sidebar to show mentions!
+                    </div>
+                </div><!-- panel -->
+
+            </div><!-- col-md-10 -->
 
     @endif
 
