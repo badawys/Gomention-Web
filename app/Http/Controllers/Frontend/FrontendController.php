@@ -19,8 +19,22 @@ class FrontendController extends Controller {
         if (Auth::user())
             return view('frontend.user.mention.feed')
                 ->withUser(auth()->user())
-                ->withMentions(Auth::user()->mentions()->paginate(10));
+                ->with('friends', $friendship->getAllFriends());
 
         return view('frontend.index');
 	}
+
+    public function mentions($id, FriendshipContract $friendship)
+    {
+
+        $selectedUser = \Gomention\User::find($id);
+
+        return view('frontend.user.mention.feed')
+            ->withUser(auth()->user())
+            ->with('friends', $friendship->getAllFriends())
+            ->withMentions(Auth::user()->mentionsByUser($selectedUser)->paginate(10))
+            ->withSelected($selectedUser);
+    }
+
+
 }

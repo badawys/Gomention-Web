@@ -216,4 +216,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             ->with('by_user','to_user');
     }
 
+    public function mentionsByUser (User $_user) {
+
+        return $this->hasMany('Gomention\Mention', 'by_user_id')
+            ->where('to_user_id', $_user->id)
+            ->orWhere(function ($query) use ($_user) {
+                $query->where('by_user_id', $_user->id)
+                      ->where('to_user_id', $this->id);
+            })
+            ->orderBy('id', 'desc')
+            ->with('by_user','to_user');
+    }
+
 }

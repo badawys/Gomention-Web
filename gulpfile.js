@@ -8,9 +8,9 @@ elixir(function(mix) {
                 'frontend/jasny_bootstrap/jasny-bootstrap.scss'
             ], 'resources/assets/css/frontend')
         .styles([  // Combine pre-processed CSS files
-                'frontend/styles.css',
                 'frontend/main.css',
-                'frontend/jasny-bootstrap.css'
+                'frontend/jasny-bootstrap.css',
+                'frontend/styles.css'
             ], 'public/css/frontend.css', 'resources/assets/css')
         .scripts([ // Combine front-end scripts
                 'plugins.js',

@@ -20,7 +20,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading" style="border-bottom: none;">
-                        <textarea name="text" class="form-control" rows="1" placeholder="Type anything.."></textarea>
+                        <textarea name="text" dir="auto" class="form-control" rows="1" placeholder="Type anything.."></textarea>
                     </div>
                     <div class="panel-body" style="cursor: pointer;">
 
@@ -46,7 +46,7 @@
                     <select multiple="multiple" name="friends[]" id="friends-select" class="friends-select form-control select2-multiple" style="width: 100%;"> </select>
                 </div>
 
-                <button type="submit" id="submit" class="btn btn-primary" disabled="disabled">Mention This</button>
+                <button type="submit" id="submit" class="btn btn-primary" disabled="disabled">Mention</button>
             {!! Form::close() !!}
 
 

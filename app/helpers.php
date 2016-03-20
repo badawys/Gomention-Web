@@ -25,3 +25,18 @@ if ( ! function_exists('access'))
 		return app('access');
 	}
 }
+
+
+if ( ! function_exists('set_active'))
+{
+	/**
+	 * Set active page
+	 *
+	 * @param string $uri
+	 * @return string
+	 */
+	function set_active($uri)
+	{
+		return Request::is($uri) ? 'active' : '';
+	}
+}

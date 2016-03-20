@@ -16,9 +16,12 @@ Route::group(['namespace' => 'Frontend'], function ()
      */
     Route::group(['middleware' => 'auth'], function ()
     {
+
+        Route::get('/mentions/{id}', ['as' => 'mentions.by', 'where' => ['id' => '[0-9]+'], 'uses' => 'FrontendController@mentions']);
+
         Route::get('dashboard', ['as' => 'frontend.dashboard', 'uses' => 'DashboardController@index']);
 
-        Route::get('profile/{id}', ['as' => 'profile.show', 'uses' => 'ProfileController@show']);
+        Route::get('profile/{id}', ['as' => 'profile.show', 'where' => ['id' => '[0-9]+'], 'uses' => 'ProfileController@show']);
         Route::resource('profile', 'ProfileController', ['only' => ['edit', 'update']]);
     });
 
