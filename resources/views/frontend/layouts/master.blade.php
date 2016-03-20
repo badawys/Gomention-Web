@@ -27,9 +27,9 @@
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
         <!-- Icons-->
-        <link rel="apple-touch-icon" href="favicon.png">
+        <link rel="apple-touch-icon" href="{{url('favicon.png')}}">
         <!-- Place favicon.ico in the root directory -->
-        <link rel="icon" href="favicon.png">
+        <link rel="icon" href="{{url('favicon.png')}}">
 
         {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
 

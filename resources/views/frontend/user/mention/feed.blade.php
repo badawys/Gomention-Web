@@ -24,7 +24,7 @@
 
             @foreach($friends as $friend)
 
-                <a href="{{url('mentions/'.$friend->id)}}" class="list-group-item {{ set_active('mentions/'.$friend->id) }}">
+                <a href="{{route('mentions', $friend->id)}}" class="list-group-item {{ set_active('mentions/'.$friend->id) }}">
                     <div class="sidebar-item">
                         <div class="sidebar-item-pic">
                             <span>
