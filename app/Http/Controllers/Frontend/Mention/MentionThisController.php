@@ -194,6 +194,14 @@ class MentionThisController extends Controller
             $mentionArray['provider_url'] = $data->data['provider_url'];
             $mentionArray['url'] = $data->data['url'];
             $mentionArray['photo'] = $data->data['media']['url'];
+
+        } elseif ($type == 'sound_cloud') {
+            $mentionArray['provider_url'] = $data->data['provider_url'];
+            $mentionArray['favicon_url'] = $data->data['favicon_url'];
+            $mentionArray['title'] = $data->data['title'];
+            $mentionArray['description'] = $data->data['description'];
+            $mentionArray['url'] = $data->data['url'];
+            $mentionArray['embed'] = $data->data['media']['html'];
         }
 
         return $mentionArray;
@@ -215,6 +223,9 @@ class MentionThisController extends Controller
 
         if (isset($data['media']) && isset($data['media']['type']) && $data['media']['type'] == 'photo')
             $mentionTypes[] = 'photo';
+
+        if (isset($data['media']) && isset($data['media']['type']) && $data['media']['type'] == 'rich' && $data['provider_name'] == 'SoundCloud')
+            $mentionTypes[] = 'sound_cloud';
 
 
         return $mentionTypes;

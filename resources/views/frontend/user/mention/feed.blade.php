@@ -110,6 +110,9 @@
                                                     @elseif($mention->type == 'video' )
                                                         @include('frontend.user.mention.cards.video', ['mention' => $mention])
 
+                                                    @elseif($mention->type == 'sound_cloud' )
+                                                        @include('frontend.user.mention.cards.sound', ['mention' => $mention])
+
                                                     @endif
                                                 </div>
 

@@ -20,6 +20,10 @@
                     <a href="{{route('mention.this.settings',[$type, $id])}}" class="btn btn-primary btn-block" style="margin-bottom: 15px;">Video</a>
                 @endif
 
+                @if($type == 'sound_cloud')
+                    <a href="{{route('mention.this.settings',[$type, $id])}}" class="btn btn-primary btn-block" style="margin-bottom: 15px;">Sound</a>
+                @endif
+
                 @if($type == 'article')
                     <a href="{{route('mention.this.settings',[$type, $id])}}" class="btn btn-primary btn-block" style="margin-bottom: 15px;" >Article</a>
                 @endif
