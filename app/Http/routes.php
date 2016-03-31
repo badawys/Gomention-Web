@@ -17,7 +17,7 @@ Route::group(['namespace' => 'Frontend'], function ()
     Route::group(['middleware' => 'auth'], function ()
     {
 
-        Route::get('/mentions/{id}', ['as' => 'mentions.by', 'where' => ['id' => '[0-9]+'], 'uses' => 'FrontendController@mentions']);
+        Route::get('/mentions/{id}', ['as' => 'mentions', 'where' => ['id' => '[0-9]+'], 'uses' => 'FrontendController@mentions']);
 
         Route::get('dashboard', ['as' => 'frontend.dashboard', 'uses' => 'DashboardController@index']);
 
@@ -75,6 +75,8 @@ Route::group(['namespace' => 'Frontend'], function ()
             Route::get('delete', [ 'as' => 'mention.delete', 'uses' => 'MentionController@delete']);
             Route::get('hide', [ 'as' => 'mention.hide', 'uses' => 'MentionController@hide']);
             Route::get('unhide', [ 'as' => 'mention.unhide', 'uses' => 'MentionController@unhide']);
+
+            Route::get('like', [ 'as' => 'mention.like', 'uses' => 'MentionController@toggleLike']);
         });
 
         /**

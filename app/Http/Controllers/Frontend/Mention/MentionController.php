@@ -5,6 +5,7 @@ namespace Gomention\Http\Controllers\Frontend\Mention;
 use Gomention\Mention;
 
 use Gomention\Http\Controllers\Controller;
+use Gomention\Repositories\Frontend\Like\LikeContract;
 
 class MentionController extends Controller
 {
@@ -42,5 +43,16 @@ class MentionController extends Controller
         //TODO
     }
 
+    public function toggleLike ($id, LikeContract $like) {
+
+        if (true){
+
+            $like->toggleLike($id, auth()->user()->id);
+
+            return json_decode('success');
+        }
+        return json_decode('error');
+
+    }
 
 }

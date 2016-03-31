@@ -1,3 +1,5 @@
+{{--{{dd($mentions)}}--}}
+
 @extends('frontend.layouts.master')
 
 @section('after-styles-end')
@@ -24,7 +26,7 @@
 
             @foreach($friends as $friend)
 
-                <a href="{{url('mentions/'.$friend->id)}}" class="list-group-item {{ set_active('mentions/'.$friend->id) }}">
+                <a href="{{route('mentions', $friend->id)}}" class="list-group-item {{ set_active('mentions/'.$friend->id) }}">
                     <div class="sidebar-item">
                         <div class="sidebar-item-pic">
                             <span>
@@ -268,6 +270,25 @@
             });
         });
 
+        $(document).on('click','.likeToggle',function(e){
+
+            $selected = $(this);
+
+            mentionId = $selected.parents('.item').attr('id');
+
+            console.log(mentionId);
+            console.log($selected);
+
+            $.ajax({
+                url: '../mention/' +mentionId+ '/like',
+                type: 'GET',
+                success: function(result) {
+                    $selected.toggleClass("liked");
+                }
+            });
+
+            e.preventDefault();
+        });
 
     </script>
 @endsection

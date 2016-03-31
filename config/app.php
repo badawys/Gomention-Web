@@ -160,6 +160,8 @@ return [
 		Gomention\Providers\MacroServiceProvider::class,
         Gomention\Providers\FriendshipServiceProvider::class,
         Gomention\Providers\MentionServiceProvider::class,
+        Gomention\Providers\LikeServiceProvider::class,
+
 		Laravel\Socialite\SocialiteServiceProvider::class,
 
         Badawy\Embedly\EmbedlyServiceProvider::class,

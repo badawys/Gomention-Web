@@ -9147,6 +9147,14 @@ input[type="checkbox"],
     background-color: #fafafa;
 }
 
+.card-photo {
+    padding-bottom: 5px;
+}
+
+.card-video {
+    padding-bottom: 5px;
+}
+
 .mentionText {
 
     margin-top: 15px;
@@ -9288,5 +9296,29 @@ input[type="checkbox"],
 }
 .form-control::-webkit-input-placeholder {
     color: #999;
+}
+
+/****************************************************/
+
+.mention-like {
+    color: #CACACA;
+    font-size: 17px;
+    line-height: 0px;
+}
+
+.likeToggle{
+    cursor: pointer;
+}
+
+.likeToggle:hover {
+    color: #ed0000;
+}
+
+.likeToggle:active  {
+    color: inherit;
+}
+
+.liked{
+    color: #ed0000;
 }
 /*# sourceMappingURL=frontend.css.map */
