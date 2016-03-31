@@ -32,7 +32,7 @@ class FrontendController extends Controller {
         return view('frontend.user.mention.feed')
             ->withUser(auth()->user())
             ->with('friends', $friendship->getAllFriends())
-            ->withMentions(Auth::user()->mentionsByUser($selectedUser)->paginate(10))
+            ->withMentions(Auth::user()->userMentions($selectedUser)->paginate(10))
             ->withSelected($selectedUser);
     }
 

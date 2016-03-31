@@ -1,3 +1,5 @@
+{{--{{dd($mentions)}}--}}
+
 @extends('frontend.layouts.master')
 
 @section('after-styles-end')
@@ -268,6 +270,25 @@
             });
         });
 
+        $(document).on('click','.likeToggle',function(e){
+
+            $selected = $(this);
+
+            mentionId = $selected.parents('.item').attr('id');
+
+            console.log(mentionId);
+            console.log($selected);
+
+            $.ajax({
+                url: '../mention/' +mentionId+ '/like',
+                type: 'GET',
+                success: function(result) {
+                    $selected.toggleClass("liked");
+                }
+            });
+
+            e.preventDefault();
+        });
 
     </script>
 @endsection

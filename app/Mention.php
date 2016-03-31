@@ -59,4 +59,11 @@ class Mention extends Model {
 
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function likes (){
+        return $this->hasMany('Gomention\Like', 'mention_id', 'id');
+    }
+
 }

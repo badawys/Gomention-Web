@@ -3,9 +3,16 @@
 
 {{--<div class="panel-footer" style="background-color: #ffffff">--}}
 
-    <div style="padding: 5px 15px 5px 15px; border-bottom: 1px solid #ddd;">
-        <span style="color: #f20000"><i class="fa fa-heart-o"></i></span>
-        <span style="margin-left: 10px; color: #487cff;"><i class="fa fa-comment-o"></i> 0</span>
+    <div style="padding: 5px 15px 5px 15px; border-bottom: 1px solid #ddd; height: 34px;">
+        {{--<span style="color: #cacaca;"><i class="fa fa-comment"></i></span>--}}
+
+        @if($mention->to_user->id == Auth::user()->id || ($mention->by_user->id == Auth::user()->id && !$mention->likes->isEmpty()))
+            <span
+                    class="mention-like {{$mention->by_user->id == Auth::user()->id ? ' ': 'likeToggle'}} {{!$mention->likes->isEmpty()? 'liked ': ' '}}"
+                    data-toggle="tooltip" data-placement="top" title="{{!$mention->likes->isEmpty() && $mention->by_user->id == Auth::user()->id ?  $mention->to_user->name . ' likes this!' : ''}}">
+                <i class="fa fa-heart"></i>
+            </span>
+        @endif
 
         <span class="pull-right" style="margin-left: 10px;">
             @if($mention->type == 'text')
@@ -27,7 +34,7 @@
 
     {{--<span style="margin-left: 10px; color: #1f62f2"><i class="fa fa-check"></i> Seen</span>--}}
 
-    <div class="dropup" style="padding: 10px 15px 10px 15px;">
+    <div class="dropup" style="padding: 10px 15px 10px 15px; {{$mention->by_user->id == Auth::user()->id ? 'background-color: #f6f6f6;' : ''}}">
 
         <span>
             <img class="img-circle" src="{{url($mention->by_user->picture)}}" style="width: 30px; height: 30px; margin-right: 10px;">

@@ -75,6 +75,8 @@ Route::group(['namespace' => 'Frontend'], function ()
             Route::get('delete', [ 'as' => 'mention.delete', 'uses' => 'MentionController@delete']);
             Route::get('hide', [ 'as' => 'mention.hide', 'uses' => 'MentionController@hide']);
             Route::get('unhide', [ 'as' => 'mention.unhide', 'uses' => 'MentionController@unhide']);
+
+            Route::get('like', [ 'as' => 'mention.like', 'uses' => 'MentionController@toggleLike']);
         });
 
         /**

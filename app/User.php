@@ -213,10 +213,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('Gomention\Mention', 'by_user_id')
             ->orWhere('to_user_id', $this->id)
             ->orderBy('id', 'desc')
-            ->with('by_user','to_user');
+            ->with('by_user','to_user', 'likes');
     }
 
-    public function mentionsByUser (User $_user) {
+
+    /**
+     * @param User $_user
+     * @return mixed
+     */
+    public function userMentions (User $_user) {
 
         return $this->hasMany('Gomention\Mention', 'by_user_id')
             ->where('to_user_id', $_user->id)
@@ -225,7 +230,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                       ->where('to_user_id', $this->id);
             })
             ->orderBy('id', 'desc')
-            ->with('by_user','to_user');
+            ->with('by_user','to_user', 'likes');
     }
 
 }
