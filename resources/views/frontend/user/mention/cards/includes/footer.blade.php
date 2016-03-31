@@ -47,11 +47,11 @@
         </span>
 
         <ul class="dropdown-menu dropdown-menu-left pull-right" style="margin-top: -15px;" aria-labelledby="dropdownMenu1">
-            <li><a href="#"> <i class="fa fa-thumb-tack"></i> Pin</a></li>
-            <li><a href="#"> <i class="fa fa-retweet"></i> Re-mention</a></li>
-            <li><a href="#"> <i class="fa fa-external-link"></i> Go to URL</a></li>
+            {{--<li><a href="#"> <i class="fa fa-thumb-tack"></i> Pin</a></li>--}}
+            {{--<li><a href="#"> <i class="fa fa-retweet"></i> Re-mention</a></li>--}}
+            <li><a href={{$mention->data['url']}}" target='_blank'> <i class="fa fa-external-link"></i> Go to URL</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#"> <i class="fa fa-eye-slash"></i> Hide</a></li>
+            {{--<li><a href="#"> <i class="fa fa-eye-slash"></i> Hide</a></li>--}}
             <li><a class="delete-mention" style="cursor: pointer;"> <i class="fa fa-trash-o"></i> Delete</a></li>
         </ul>
 

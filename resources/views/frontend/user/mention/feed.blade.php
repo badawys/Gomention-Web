@@ -255,7 +255,7 @@
 
         $('#doDelete').click(function(){
             $.ajax({
-                url: 'mention/' +delId+ '/delete',
+                url: '../mention/' +delId+ '/delete',
                 type: 'GET',
                 success: function(result) {
                     $('#container')
