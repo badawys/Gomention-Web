@@ -67,10 +67,12 @@ class MentionThisController extends Controller
                 ]);
 
                 if (!$data->error) {
-                    $cached = $cached->update([
-                        'user_id' => Auth::user()->id,
-                        'data' => $data
-                    ]);
+
+                    $cached->user_id = Auth::user()->id;
+                    $cached->data = $data;
+
+                    $cached->save();
+
                 } else
                     return view('frontend.user.mention.mention_this.error')
                         ->with(['error' => 'Error on getting data from URL']);
@@ -160,8 +162,7 @@ class MentionThisController extends Controller
             $mention->mention($mentionType, $friend_id, $mentionData);
         }
 
-        return view('frontend.user.mention.mention_this.error')
-            ->with(['error' => 'Done!']);
+        return view('frontend.user.mention.mention_this.end');
     }
 
     /**
@@ -192,7 +193,16 @@ class MentionThisController extends Controller
         } elseif ($type == 'photo') {
             $mentionArray['provider_url'] = $data->data['provider_url'];
             $mentionArray['url'] = $data->data['url'];
-            }
+            $mentionArray['photo'] = $data->data['media']['url'];
+
+        } elseif ($type == 'sound_cloud') {
+            $mentionArray['provider_url'] = $data->data['provider_url'];
+            $mentionArray['favicon_url'] = $data->data['favicon_url'];
+            $mentionArray['title'] = $data->data['title'];
+            $mentionArray['description'] = $data->data['description'];
+            $mentionArray['url'] = $data->data['url'];
+            $mentionArray['embed'] = $data->data['media']['html'];
+        }
 
         return $mentionArray;
     }
@@ -211,8 +221,11 @@ class MentionThisController extends Controller
         if (isset($data['media']) && isset($data['media']['type']) && $data['media']['type'] == 'video')
             $mentionTypes[] = 'video';
 
-        if ($data['type'] == 'image')
+        if (isset($data['media']) && isset($data['media']['type']) && $data['media']['type'] == 'photo')
             $mentionTypes[] = 'photo';
+
+        if (isset($data['media']) && isset($data['media']['type']) && $data['media']['type'] == 'rich' && $data['provider_name'] == 'SoundCloud')
+            $mentionTypes[] = 'sound_cloud';
 
 
         return $mentionTypes;

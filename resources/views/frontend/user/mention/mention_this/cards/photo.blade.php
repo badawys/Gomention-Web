@@ -1,2 +1,1 @@
-<img style="max-width: 100%" src="{{$mention['url']}}">
-
+<img style="max-width: 100%" src="{{isset($mention['photo']) ? $mention['photo'] : $mention['url']}}">

@@ -192,6 +192,10 @@
     padding: 0 !important;
 }
 
+.card-body-sound_cloud {
+    padding: 0 !important;
+}
+
 .card-link {
 
     background-color: #F7F7F7;
@@ -210,6 +214,10 @@
 }
 
 .card-video {
+    padding-bottom: 5px;
+}
+
+.card-sound_cloud {
     padding-bottom: 5px;
 }
 

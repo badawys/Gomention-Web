@@ -9134,6 +9134,10 @@ input[type="checkbox"],
     padding: 0 !important;
 }
 
+.card-body-sound_cloud {
+    padding: 0 !important;
+}
+
 .card-link {
 
     background-color: #F7F7F7;
@@ -9152,6 +9156,10 @@ input[type="checkbox"],
 }
 
 .card-video {
+    padding-bottom: 5px;
+}
+
+.card-sound_cloud {
     padding-bottom: 5px;
 }
 

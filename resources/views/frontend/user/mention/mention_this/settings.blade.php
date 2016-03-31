@@ -36,6 +36,9 @@
                         @elseif($type == 'video' )
                             @include('frontend.user.mention.mention_this.cards.video', ['mention' => $data])
 
+                        @elseif($type == 'sound_cloud' )
+                            @include('frontend.user.mention.mention_this.cards.sound', ['mention' => $data])
+
                         @endif
 
 
