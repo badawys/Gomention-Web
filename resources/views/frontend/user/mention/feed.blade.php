@@ -4,6 +4,7 @@
 
 @section('after-styles-end')
     <link href="{!!asset('css/cards.css')!!}" rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel='stylesheet' type='text/css'>
 @endsection
 
 @section('left-bar')
@@ -26,7 +27,7 @@
 
             @foreach($friends as $friend)
 
-                <a href="{{route('mentions', $friend->id)}}" class="list-group-item {{ set_active('mentions/'.$friend->id) }}">
+                <a href="{{route('mentions', $friend->id)}}" class="list-group-item {{ set_active($friend->id) }}">
                     <div class="sidebar-item">
                         <div class="sidebar-item-pic">
                             <span>
@@ -205,10 +206,13 @@
     <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
     <script src="{!!asset('js/imagesloaded.pkgd.min.js')!!}"></script>
     <script src="{!!asset('js/jquery.jscroll.min.js')!!}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
 
     <script>
 
-        //Hide pagination
+         //Hide pagination
         $('ul.pagination:visible:first').hide();
 
         var $container = $('#container');
@@ -223,6 +227,14 @@
                 itemSelector: '.item',
                 percentPosition: true
             })
+
+            $('.fancybox').fancybox({
+                padding : 0,
+                openEffect  : 'elastic',
+                closeEffect   : 'elastic',
+                closeBtn: false,
+                closeClick: true
+            });
         });
 
         $('.mentions-list').infinitescroll({

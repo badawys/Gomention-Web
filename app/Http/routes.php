@@ -17,7 +17,10 @@ Route::group(['namespace' => 'Frontend'], function ()
     Route::group(['middleware' => 'auth'], function ()
     {
 
-        Route::get('/mentions/{id}', ['as' => 'mentions', 'where' => ['id' => '[0-9]+'], 'uses' => 'FrontendController@mentions']);
+        Route::get('/{id}', ['as' => 'mentions', 'where' => ['id' => '[0-9]+'], 'uses' => 'FrontendController@mentions']);
+
+        //Mention View Page
+        Route::get('/mention/{id}', ['as' => 'mention.view', 'uses' => 'FrontendController@viewMention']);
 
         Route::get('dashboard', ['as' => 'frontend.dashboard', 'uses' => 'DashboardController@index']);
 
