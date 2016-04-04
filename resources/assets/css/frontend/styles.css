@@ -129,6 +129,7 @@
     border-color: #ddd;
 }
 
+
 .list-group-item {
     border: none;
     padding: 1px;
@@ -168,20 +169,19 @@
 }
 
 
-
 /********************Cards Styles***************/
 
 .panel {
-    border-radius: none !important;
+    border-radius: 0 !important;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .panel-heading {
-    border-radius: none !important;
+    border-radius: 0 !important;
 }
 
 .panel-footer {
-    border-radius: none !important;
+    border-radius: 0 !important;
 }
 
 .card-body-photo {
@@ -387,3 +387,18 @@
 .liked{
     color: #ed0000;
 }
+
+
+/*********************************/
+
+.fancybox {
+	cursor: -webkit-zoom-in !important;
+	cursor: -moz-zoom-in !important;
+}
+
+.fancybox-image {
+	cursor: -webkit-zoom-out !important;
+	cursor: -moz-zoom-out !important;
+}
+
+/*********************************/

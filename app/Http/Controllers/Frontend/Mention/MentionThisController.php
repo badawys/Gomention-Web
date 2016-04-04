@@ -188,6 +188,7 @@ class MentionThisController extends Controller
             $mentionArray['title'] = $data->data['title'];
             $mentionArray['description'] = $data->data['description'];
             $mentionArray['url'] = $data->data['url'];
+            $mentionArray['thumbnail'] = $data->data['images'][0]['thumbnail_url'];
             $mentionArray['embed'] = $data->data['media']['html'];
 
         } elseif ($type == 'photo') {
@@ -201,6 +202,7 @@ class MentionThisController extends Controller
             $mentionArray['title'] = $data->data['title'];
             $mentionArray['description'] = $data->data['description'];
             $mentionArray['url'] = $data->data['url'];
+            $mentionArray['thumbnail'] = $data->data['images'][0]['thumbnail_url'];
             $mentionArray['embed'] = $data->data['media']['html'];
         }
 

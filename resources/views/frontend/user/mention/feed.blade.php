@@ -81,7 +81,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="row" style="margin-left: 250px;">
@@ -95,7 +94,6 @@
                                         {{--@include('frontend.user.mention.cards.includes.header', ['mention' => $mention])--}}
 
                                         <div class="panel panel-default">
-
                                             <div class="panel-body {{'card-body-'.$mention->type }}">
                                                 <div class="{{'card-'.$mention->type }}">
 
@@ -208,102 +206,6 @@
     <script src="{!!asset('js/jquery.jscroll.min.js')!!}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+    <script src="{!!asset('js/feed.js')!!}"></script>
 
-
-    <script>
-
-         //Hide pagination
-        $('ul.pagination:visible:first').hide();
-
-        var $container = $('#container');
-
-        $container.imagesLoaded().progress( function(){
-
-            $container.show();
-
-            $container.masonry({
-                // options
-                columnWidth: '.item',
-                itemSelector: '.item',
-                percentPosition: true
-            })
-
-            $('.fancybox').fancybox({
-                padding : 0,
-                openEffect  : 'elastic',
-                closeEffect   : 'elastic',
-                closeBtn: false,
-                closeClick: true
-            });
-        });
-
-        $('.mentions-list').infinitescroll({
-            navSelector  : ".pagination",
-            nextSelector : ".pagination li.active + li > a",
-            itemSelector : ".item",
-            debug        : false
-
-        },function(arrayOfNewElems){
-
-            // hide new items while they are loading
-            var $newElems = $( arrayOfNewElems ).css({ opacity: 0 });
-            // ensure that images load before adding to masonry layout
-            $newElems.imagesLoaded(function(){
-                // show elems now they're ready
-                $newElems.animate({ opacity: 1 });
-                $container.masonry( 'appended', $newElems, true );
-            });
-        });
-
-        var delId = null;
-        var delSelector = null;
-
-        $(document).on('click','.delete-mention',function(){
-
-            delId = $(this).parents('.item').attr('id');
-            delSelector = $('#'+delId);
-
-            $('#delModel').modal('show');
-
-
-        });
-
-        $('#doDelete').click(function(){
-            $.ajax({
-                url: '../mention/' +delId+ '/delete',
-                type: 'GET',
-                success: function(result) {
-                    $('#container')
-                            .masonry('remove', delSelector)
-                            .masonry();
-
-                    $('#delModel').modal('hide');
-
-                    delSelector = null;
-                    delId = null;
-                }
-            });
-        });
-
-        $(document).on('click','.likeToggle',function(e){
-
-            $selected = $(this);
-
-            mentionId = $selected.parents('.item').attr('id');
-
-            console.log(mentionId);
-            console.log($selected);
-
-            $.ajax({
-                url: '../mention/' +mentionId+ '/like',
-                type: 'GET',
-                success: function(result) {
-                    $selected.toggleClass("liked");
-                }
-            });
-
-            e.preventDefault();
-        });
-
-    </script>
 @endsection
