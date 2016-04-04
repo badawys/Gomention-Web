@@ -9310,8 +9310,13 @@ input[type="checkbox"],
 
 .mention-like {
     color: #CACACA;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 0px;
+    padding: 5px;
+}
+
+.mention-like:hover {
+    background-color: #F9F9F9;
 }
 
 .likeToggle{
@@ -9330,6 +9335,18 @@ input[type="checkbox"],
     color: #ed0000;
 }
 
+.mention-comment {
+	font-size: 17px;
+    line-height: 0px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.mention-comment:hover {
+    background-color: #F9F9F9;
+}
+
+
 
 /*********************************/
 
@@ -9344,4 +9361,5 @@ input[type="checkbox"],
 }
 
 /*********************************/
+
 /*# sourceMappingURL=frontend.css.map */

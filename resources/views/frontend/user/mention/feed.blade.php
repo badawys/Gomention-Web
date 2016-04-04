@@ -5,6 +5,7 @@
 @section('after-styles-end')
     <link href="{!!asset('css/cards.css')!!}" rel='stylesheet' type='text/css'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel='stylesheet' type='text/css'>
 @endsection
 
 @section('left-bar')
@@ -206,6 +207,7 @@
     <script src="{!!asset('js/jquery.jscroll.min.js')!!}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="{!!asset('js/feed.js')!!}"></script>
 
 @endsection
