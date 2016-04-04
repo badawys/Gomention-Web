@@ -4,6 +4,7 @@
 {{--<div class="panel-footer" style="background-color: #ffffff">--}}
 
     <div style="padding: 5px 15px 5px 15px; border-bottom: 1px solid #ddd; height: 34px;">
+        {{--<span style="color: #cacaca;"><i class="fa fa-comment"></i></span>--}}
 
         @if($mention->to_user->id == Auth::user()->id || ($mention->by_user->id == Auth::user()->id && !$mention->likes->isEmpty()))
             <span
@@ -12,10 +13,6 @@
                 <i class="fa fa-heart"></i>
             </span>
         @endif
-
-		<span href="{{url('mention/'.$mention->id)}}" class="mention-comment" style="color: #cacaca;">
-			<i class="fa fa-comment"><span style="margin-left: 10px; font-size: 10px;" class="badge">0</span></i>
-		</span>
 
         <span class="pull-right" style="margin-left: 10px;">
             @if($mention->type == 'text')

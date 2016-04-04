@@ -210,11 +210,18 @@
 }
 
 .card-photo {
-    padding-bottom: 5px;
+    background: #000;
+    margin-bottom: 5px;
+}
+
+.card-photo img {
+	display: block;
+	margin: 0 auto;
 }
 
 .card-video {
-    padding-bottom: 5px;
+    background: #000;
+    margin-bottom: 5px;
 }
 
 .card-sound_cloud {
@@ -419,3 +426,12 @@
 }
 
 /*********************************/
+
+.mfp-bg {
+	background: #F0F0F0 !important;
+    opacity: 0.97 !important;
+}
+
+.mfp-close-btn-in .mfp-close {
+    color: #9C9C9C !important;
+}

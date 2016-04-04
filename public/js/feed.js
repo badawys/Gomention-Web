@@ -8,6 +8,13 @@
 
 	var $container = $('#container'), delId, delSelector;
 
+	var magnificPopup = function () {
+		$('.mention-comment').magnificPopup({
+			type: 'ajax',
+			overflowY: 'auto'
+		});
+	};
+
 	$container.imagesLoaded().progress(function () {
 
 		$container.show();
@@ -26,17 +33,7 @@
 			closeClick: true
 		});
 
-		$('.mention-comment').magnificPopup({
-			type: 'ajax',
-			ajax: {
-				settings: null, // Ajax settings object that will extend default one - http://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
-				// For example:
-				// settings: {cache:false, async:false}
-
-				cursor: 'mfp-ajax-cur', // CSS class that will be added to body during the loading (adds "progress" cursor)
-				tError: '<a href="%url%">The content</a> could not be loaded.' //  Error message, can contain %curr% and %total% tags if gallery is enabled
-			}
-		});
+		magnificPopup();
 
 		$('.mentions-list').infinitescroll({
 			navSelector: ".pagination",
@@ -58,6 +55,9 @@
 				});
 				$container.masonry('appended', $newElems, true);
 			});
+
+			// Re-init magnificPopup after added items
+			magnificPopup();
 		});
 	});
 
