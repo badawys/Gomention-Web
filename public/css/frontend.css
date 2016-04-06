@@ -9377,4 +9377,32 @@ input[type="checkbox"],
 .mfp-close-btn-in .mfp-close {
     color: #9C9C9C !important;
 }
+
+.mfp-preloader {
+	color: #868686 !important;
+}
+
+/*********************************/
+
+.comments {
+  padding: 20px;
+}
+
+.comments-list {
+  margin-bottom: 20px;
+}
+
+.comment {
+  padding-bottom: 20px;
+}
+
+.new-comment {
+  padding: 15px;
+  background-color: #F6F6F6;
+}
+
+.new-comment-form {
+  padding: 0;
+}
+
 /*# sourceMappingURL=frontend.css.map */
